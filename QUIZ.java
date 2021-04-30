@@ -1,19 +1,19 @@
 
 /**
- * Beschreiben Sie hier die Klasse Test2.
+ * Beschreiben Sie hier die Klasse QUIZ.
  * 
  * @author (Ihr Name) 
  * @version (eine Versionsnummer oder ein Datum)
  */
-public class Test2
+public class QUIZ
 {
     // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
     private int x;
 
     /**
-     * Konstruktor für Objekte der Klasse Test2
+     * Konstruktor für Objekte der Klasse QUIZ
      */
-    public Test2()
+    public QUIZ()
     {
         // Instanzvariable initialisieren
         x = 0;
