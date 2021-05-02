@@ -1,0 +1,7 @@
+class GRAFIKOBERFLAECHE
+{
+    GRAFIKOBERFLAECHE()
+    {
+        
+    }
+}

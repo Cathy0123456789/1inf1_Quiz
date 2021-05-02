@@ -1,33 +1,24 @@
-
-/**
- * Beschreiben Sie hier die Klasse FRAGE.
- * 
- * @author (Ihr Name) 
- * @version (eine Versionsnummer oder ein Datum)
- */
-public class FRAGE
+class FRAGE
 {
-    // Instanzvariablen - ersetzen Sie das folgende Beispiel mit Ihren Variablen
-    private int x;
+    String frage;
+    String[] antworten;
+    int richtigeAntwort;
+    int schweregrad;
 
-    /**
-     * Konstruktor für Objekte der Klasse FRAGE
-     */
-    public FRAGE()
+    FRAGE()
     {
-        // Instanzvariable initialisieren
-        x = 0;
+
     }
 
-    /**
-     * Ein Beispiel einer Methode - ersetzen Sie diesen Kommentar mit Ihrem eigenen
-     * 
-     * @param  y    ein Beispielparameter für eine Methode
-     * @return        die Summe aus x und y
-     */
-    public int beispielMethode(int y)
+    boolean IstAntwortRichtig(int antwort)
     {
-        // tragen Sie hier den Code ein
-        return x + y;
+        if (antwort == richtigeAntwort)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
