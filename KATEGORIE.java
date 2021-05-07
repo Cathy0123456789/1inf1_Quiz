@@ -5,7 +5,7 @@ class KATEGORIE
     // Name der Kategorie
     String name;
     KATEGORIE nachfolger;
-    
+
     // Speicherung aller Fragen einer Kategorie in einer ArrayList
     ArrayList<FRAGE> fragen;
 
@@ -14,11 +14,11 @@ class KATEGORIE
         name = kategorieName;
         fragen = new ArrayList<FRAGE>();
     }
-    
+
     /*
      * Frage zu ArrayList hinzufuegen
      */
-    
+
     void FrageHinzufuegen(FRAGE frage)
     {
         fragen.add(frage);
@@ -29,32 +29,31 @@ class KATEGORIE
         int x = (int)(Math.random() * (fragen.size() + 1));
         return fragen.get(x);
     }
-    
+
     void NachfolgerSetzen(KATEGORIE k)
     {
         if (nachfolger == null)
         {
-          nachfolger=k;  
+            nachfolger = k;  
         }
         else
         {
             nachfolger.NachfolgerSetzen(k);
         }
-        
     }
-    
+
     KATEGORIE NachfolgerGeben()
     {
-      return nachfolger;  
+        return nachfolger;  
     }
-    
+
     void KategorienAusgeben()
     {
         System.out.println(name);
         if (nachfolger != null)
         {
-         nachfolger.KategorienAusgeben();
+            nachfolger.KategorienAusgeben();
         }
     }
 }
-    
+ 
