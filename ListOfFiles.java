@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.Scanner;
 public class ListOfFiles {
     public static void main(String args[]) throws IOException {
-        File directoryPath = new File("H:\\Fragen");
+        File directoryPath = new File("");
         File filesList[] = directoryPath.listFiles();
         System.out.println("List of files and directories in the specified directory:");
         Scanner sc = null;
