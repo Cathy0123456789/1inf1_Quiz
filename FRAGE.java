@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 class FRAGE
 {
     String frage;
@@ -10,16 +14,9 @@ class FRAGE
 
     int schweregrad;
 
-    FRAGE(String frage, String antwort1, String antwort2, String antwort3, String antwort4, int AntwortRichtig, int schweregrad)
+    FRAGE()
     {
-        this.frage = frage;
         antworten = new String [4];
-        antworten [0] = antwort1;
-        antworten [1] = antwort2;
-        antworten [2] = antwort3;
-        antworten [3] = antwort4;
-        this.richtigeAntwort = richtigeAntwort;
-        this.schweregrad = schweregrad;
     }
 
     /*
@@ -42,12 +39,40 @@ class FRAGE
      * Ausgabe der Frage sowie der 4 Antwortmoeglichkeiten auf der Konsole
      */
 
-    void FrageStellen()
+    void FrageAusgeben()
     {
         System.out.println(frage);
         for (String i : antworten)
         {
             System.out.println(i);
+        }
+    }
+
+    /*
+     * Speichert den Inhalt einer Textdatei in Attributen ab
+     */
+
+    void DateiInhaltLesen(String datei)
+    {
+        try
+        {
+            File myObj = new File(datei);
+            Scanner myReader = new Scanner(myObj);
+
+            frage = myReader.nextLine();
+            for (int i = 0; i < 4; i++)
+            {
+                antworten[i] = myReader.nextLine(); 
+            }
+            richtigeAntwort = Integer.parseInt(myReader.nextLine());
+            schweregrad = Integer.parseInt(myReader.nextLine());
+
+            myReader.close();
+        }
+        catch (FileNotFoundException e)
+        {
+            System.out.println("Fehler aufgetreten.");
+            e.printStackTrace();
         }
     }
 }

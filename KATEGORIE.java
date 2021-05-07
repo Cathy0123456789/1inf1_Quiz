@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.io.File;
 
 class KATEGORIE
 {
@@ -16,44 +17,36 @@ class KATEGORIE
     }
 
     /*
-     * Frage zu ArrayList hinzufuegen
+     * Fuegt Fragen aus dem Ordner mit dem jeweiligen Kategorien-Name hinzu
      */
 
-    void FrageHinzufuegen(FRAGE frage)
+    void FragenHinzufuegen()
     {
-        fragen.add(frage);
+        String[] pfadnamen;
+        File f = new File("Fragen\\" + name);
+
+        pfadnamen = f.list();
+
+        for (String i : pfadnamen)
+        {
+            fragen.add(new FRAGE());
+        }
+
+        for (int i = 0; i < fragen.size(); i++)
+        {
+            fragen.get(i).DateiInhaltLesen("Fragen\\" + name + "\\" + pfadnamen[i]);
+            fragen.get(i).FrageAusgeben();
+            System.out.println();
+        }
     }
 
+    /*
+     * Sucht eine zufällige Frage aus der Kategorie aus und gibt sie zurück
+     */
+    
     FRAGE Zufallsfrage()
     {
-        int x = (int)(Math.random() * (fragen.size() + 1));
+        int x = (int)(Math.random() * fragen.size());
         return fragen.get(x);
     }
-
-    void NachfolgerSetzen(KATEGORIE k)
-    {
-        if (nachfolger == null)
-        {
-            nachfolger = k;  
-        }
-        else
-        {
-            nachfolger.NachfolgerSetzen(k);
-        }
-    }
-
-    KATEGORIE NachfolgerGeben()
-    {
-        return nachfolger;  
-    }
-
-    void KategorienAusgeben()
-    {
-        System.out.println(name);
-        if (nachfolger != null)
-        {
-            nachfolger.KategorienAusgeben();
-        }
-    }
 }
- 

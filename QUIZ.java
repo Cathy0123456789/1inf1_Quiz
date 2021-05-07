@@ -1,24 +1,32 @@
+import java.util.ArrayList;
+import java.io.File;
+
 class QUIZ
 {
-    KATEGORIE kategorie;
+    ArrayList<KATEGORIE> kategorien;
 
     // Fragenanzahl pro Quiz
     int fragenanzahl;
 
     QUIZ(int fragenanzahl)
     {
-        fragenanzahl = this.fragenanzahl;
-        kategorie = new KATEGORIE ("Allgemein");
+        this.fragenanzahl = fragenanzahl;
+        kategorien = new ArrayList<KATEGORIE>();
     }
 
-    void neueKategorie(String name)
+    /*
+     * Liest die Ordner-Namen (=Kategorien) aus dem Ordner "Fragen" ein und
+     * speichert sie ab
+     */
+    
+    void KategorienEinlesen()
     {
-        KATEGORIE k = new KATEGORIE (name); 
-        kategorie.NachfolgerSetzen(k);
-    }
-
-    void KategorienAusgeben()
-    {
-        kategorie.KategorienAusgeben();
+        File[] directories = new File("Fragen").listFiles(File::isDirectory);
+        
+        for (File i : directories)
+        {
+            String kat = i.toString();
+            kategorien.add(new KATEGORIE(kat.substring(7, kat.length())));
+        }
     }
 }
