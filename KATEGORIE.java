@@ -5,7 +5,6 @@ class KATEGORIE
 {
     // Name der Kategorie
     String name;
-    KATEGORIE nachfolger;
 
     // Speicherung aller Fragen einer Kategorie in einer ArrayList
     ArrayList<FRAGE> fragen;
@@ -17,10 +16,10 @@ class KATEGORIE
     }
 
     /*
-     * Fuegt Fragen aus dem Ordner mit dem jeweiligen Kategorien-Name hinzu
+     * Liest Fragen aus dem Ordner mit dem jeweiligen Kategorien-Name ein
      */
 
-    void FragenHinzufuegen()
+    void FragenEinlesen()
     {
         String[] pfadnamen;
         File f = new File("Fragen\\" + name);
@@ -32,16 +31,16 @@ class KATEGORIE
             fragen.add(new FRAGE());
         }
 
-        for (int i = 0; i < fragen.size(); i++)
-        {
-            fragen.get(i).DateiInhaltLesen("Fragen\\" + name + "\\" + pfadnamen[i]);
-            fragen.get(i).FrageAusgeben();
-            System.out.println();
-        }
+        // for (int i = 0; i < fragen.size(); i++)
+        // {
+            // fragen.get(i).DateiInhaltLesen("Fragen\\" + name + "\\" + pfadnamen[i]);
+            // fragen.get(i).FrageAusgeben();
+            // System.out.println();
+        // }
     }
 
     /*
-     * Sucht eine zufällige Frage aus der Kategorie aus und gibt sie zurück
+     * Sucht eine zufaellige Frage aus der Kategorie aus und gibt sie zurueck
      */
     
     FRAGE Zufallsfrage()

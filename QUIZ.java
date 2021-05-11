@@ -15,8 +15,7 @@ class QUIZ
     }
 
     /*
-     * Liest die Ordner-Namen (=Kategorien) aus dem Ordner "Fragen" ein und
-     * speichert sie ab
+     * Liest Ordner-Namen (= Kategorien) aus dem Ordner "Fragen" ein
      */
     
     void KategorienEinlesen()
