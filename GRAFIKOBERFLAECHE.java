@@ -3,6 +3,7 @@ import java.awt.event.*;
 
 class GRAFIKOBERFLAECHE
 {
+
     Frame mainFrame;
     Button Antwort1;
     Button Antwort2;
@@ -61,26 +62,4 @@ class GRAFIKOBERFLAECHE
         mainFrame.add(fragenAnzeige);
     
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
-
-
-
-
-
-
-
-
