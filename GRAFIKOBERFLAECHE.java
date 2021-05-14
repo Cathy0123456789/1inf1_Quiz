@@ -8,7 +8,7 @@ class GRAFIKOBERFLAECHE
     Button Antwort2;
     Button Antwort3;
     Button Antwort4;
-    Label x;
+    Label fragenAnzeige;
    
     GRAFIKOBERFLAECHE ()
     {
@@ -51,14 +51,14 @@ class GRAFIKOBERFLAECHE
         mainFrame.add(Antwort3);
         mainFrame.add(Antwort4);
     
-        x = new Label();
-        x.setSize(200,50);
-        x.setLocation(325,150);
-        x.setVisible(true);
-        x.setText("Frage:");
-        x.setEnabled(true);
+        fragenAnzeige = new Label();
+        fragenAnzeige.setSize(200,50);
+        fragenAnzeige.setLocation(325,150);
+        fragenAnzeige.setVisible(true);
+        fragenAnzeige.setText("Frage:");
+        fragenAnzeige.setEnabled(true);
         
-        mainFrame.add(x);
+        mainFrame.add(fragenAnzeige);
     
     }
     
