@@ -34,8 +34,8 @@ class KATEGORIE
         for (int i = 0; i < fragen.size(); i++)
         {
             fragen.get(i).DateiInhaltLesen("Fragen\\" + name + "\\" + pfadnamen[i]);
-            // fragen.get(i).FrageAusgeben();
-            // System.out.println();
+            fragen.get(i).FrageAusgeben();
+            System.out.println();
         }
     }
 

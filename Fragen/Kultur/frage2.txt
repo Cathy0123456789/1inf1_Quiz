@@ -1,0 +1,7 @@
+Welche Sprache hat (nach Wörterbucheinträgen) die meisten Wörter?
+Deutsch
+Englisch
+Italienisch
+japanisch
+2
+2
