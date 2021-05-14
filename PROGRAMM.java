@@ -3,7 +3,9 @@ class PROGRAMM
     int punkte;
     int[] highscore;
     static QUIZ quiz;
-    static GRAFIKOBERFLAECHE grafik;
+    static HAUPTMENUEGRAFIK grafik1;
+    static QUIZGRAFIK grafik2;
+
 
     public static void main(String args[])
     {
@@ -23,6 +25,7 @@ class PROGRAMM
         KATEGORIE k = quiz.kategorien.get(0);
         FRAGE f = k.Zufallsfrage();
         
-        grafik = new GRAFIKOBERFLAECHE();
+        grafik1 = new HAUPTMENUEGRAFIK();
+        grafik2 = new QUIZGRAFIK();
     }
 }
