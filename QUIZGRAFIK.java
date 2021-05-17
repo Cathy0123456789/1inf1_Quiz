@@ -3,14 +3,13 @@ import java.awt.event.*;
 
 class QUIZGRAFIK
 {
-    Frame quizfenster;
     Button antwort1;
     Button antwort2;
     Button antwort3;
     Button antwort4;
     Label fragenAnzeige;
    
-    QUIZGRAFIK ()
+    QUIZGRAFIK (Frame quizfenster)
     {
         quizfenster = new Frame();
         quizfenster.setSize(1000,500);

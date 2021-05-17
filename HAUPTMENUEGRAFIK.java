@@ -7,8 +7,10 @@ class HAUPTMENUEGRAFIK
     Label begrueßung;
     Button start;
 
-    HAUPTMENUEGRAFIK ()
+    HAUPTMENUEGRAFIK (Frame hauptf)
     {
+        hauptfenster = hauptf;
+        
         hauptfenster = new Frame();
         hauptfenster.setSize(1000,500);
         hauptfenster.setLocation(10,50);
@@ -32,5 +34,16 @@ class HAUPTMENUEGRAFIK
         start.setEnabled(true);
 
         hauptfenster.add(start);
+    }
+
+    void Ausblenden()
+    {
+        // begrueßung.setVisible(false);
+        // begrueßung.setEnabled(false);
+
+        // start.setVisible(false);
+        // start.setEnabled(false);
+        
+        hauptfenster.removeAll();
     }
 }
