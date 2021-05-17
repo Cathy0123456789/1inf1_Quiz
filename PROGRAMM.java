@@ -1,11 +1,12 @@
+import java.awt.*;
+import java.awt.event.*;
+
 class PROGRAMM
 {
     int punkte;
     int[] highscore;
     static QUIZ quiz;
-    static HAUPTMENUEGRAFIK grafik1;
-    static QUIZGRAFIK grafik2;
-
+    static GRAFIK grafik1;
 
     public static void main(String args[])
     {
@@ -25,7 +26,8 @@ class PROGRAMM
         KATEGORIE k = quiz.kategorien.get(0);
         FRAGE f = k.Zufallsfrage();
         
-        grafik1 = new HAUPTMENUEGRAFIK();
-        grafik2 = new QUIZGRAFIK();
+        Frame frame = new Frame();
+        
+        grafik1 = new GRAFIK(frame);
     }
 }
