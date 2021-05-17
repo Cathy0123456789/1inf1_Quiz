@@ -1,0 +1,7 @@
+In welcher Einheit wird der elektrische Widerstand gemessen?
+Ohm 
+Volt
+Ampere
+Watt
+1
+2
