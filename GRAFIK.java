@@ -19,7 +19,8 @@ class GRAFIK
         
         FrameGroesseAnpassen();
 
-        HauptmenueHinzufuegen();
+        // HauptmenueHinzufuegen();
+        QuizgrafikHinzufuegen();
 
         // Fenster mit "X" schließen können
         frame.addWindowListener(new WindowAdapter()

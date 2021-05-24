@@ -10,7 +10,8 @@ class HAUPTMENUEGRAFIK
     HAUPTMENUEGRAFIK (Frame hauptf, int breite, int hoehe)
     {
         hauptfenster = hauptf;
-
+        
+        // "Herzlich Willkommen und viel Spaß"
         begrueßung = new Label();
         begrueßung.setSize(breite/3, hoehe/20);
         begrueßung.setLocation(breite/3, hoehe/3);
@@ -21,6 +22,7 @@ class HAUPTMENUEGRAFIK
 
         hauptfenster.add(begrueßung);
 
+        // Button zum Starten des Spiels
         start = new Button();
         start.setSize(breite/10, hoehe/10);
         start.setLocation((int) (0.45 * breite), (int) (0.45 * hoehe));
@@ -28,7 +30,7 @@ class HAUPTMENUEGRAFIK
         start.setVisible(true);
         start.setEnabled(true);
 
-        // Wenn Start Button gedrueckt wird, wird Frame weiß
+        // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht
         start.addMouseListener(new MouseListener()
             {
                 public void mousePressed(MouseEvent me) {}

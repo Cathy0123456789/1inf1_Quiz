@@ -9,35 +9,28 @@ class QUIZGRAFIK
     Button antwort4;
     Label fragenAnzeige;
 
+    // Breite des Bildschirms
+    int breite;
+
+    // Hoehe des Bildschirms
+    int hoehe;
+
+    int antwortButtonBreite;
+    int antwortButtonHoehe;
+
     QUIZGRAFIK (Frame quizfenster, int breite, int hoehe)
     {
-        antwort1 = new Button();
-        antwort1.setSize(120, 50);
-        antwort1.setLocation(50, 300);
-        antwort1.setVisible(true);
-        antwort1.setLabel("Antwort 1");
-        antwort1.setEnabled(true);
+        this.breite = breite;
+        this.hoehe = hoehe;
 
-        antwort2 = new Button();
-        antwort2.setSize(120, 50);
-        antwort2.setLocation(250, 300);
-        antwort2.setVisible(true);
-        antwort2.setLabel("Antwort 2");
-        antwort2.setEnabled(true);
+        antwortButtonBreite = (int) (0.4 * breite);
+        antwortButtonHoehe = hoehe/10;
 
-        antwort3 = new Button();
-        antwort3.setSize(120, 50);
-        antwort3.setLocation(450, 300);
-        antwort3.setVisible(true);
-        antwort3.setLabel("Antwort 3");
-        antwort3.setEnabled(true);
-
-        antwort4 = new Button();
-        antwort4.setSize(120, 50);
-        antwort4.setLocation(650, 300);
-        antwort4.setVisible(true);
-        antwort4.setLabel("Antwort 4");
-        antwort4.setEnabled(true);
+        int abstandSeite = (int) (0.07 * breite);
+        antwort1 = neueAntwort(abstandSeite, (int) (0.6 * hoehe), "Antwort 1");
+        antwort2 = neueAntwort(breite - abstandSeite - antwortButtonBreite , antwort1.getY(), "Antwort 2");
+        antwort3 = neueAntwort(abstandSeite, antwort1.getY() + antwortButtonHoehe + hoehe/20, "Antwort 3");
+        antwort4 = neueAntwort(antwort2.getX(), antwort3.getY(), "Antwort 4");
 
         quizfenster.add(antwort1);
         quizfenster.add(antwort2);
@@ -45,12 +38,23 @@ class QUIZGRAFIK
         quizfenster.add(antwort4);
 
         fragenAnzeige = new Label();
-        fragenAnzeige.setSize(200, 50);
-        fragenAnzeige.setLocation(325, 150);
-        fragenAnzeige.setVisible(true);
+        fragenAnzeige.setSize(breite/25, hoehe/40);
+        fragenAnzeige.setLocation(breite/2 - fragenAnzeige.getSize().width/2, hoehe/5);
+        fragenAnzeige.setFont(new Font("Frage", Font.ITALIC, breite/75));
         fragenAnzeige.setText("Frage:");
+        fragenAnzeige.setVisible(true);
         fragenAnzeige.setEnabled(true);
-
         quizfenster.add(fragenAnzeige);
+    }
+
+    Button neueAntwort(int xPosition, int yPosition, String text)
+    {
+        Button b = new Button();
+        b.setSize(antwortButtonBreite, antwortButtonHoehe);
+        b.setLocation(xPosition, yPosition);
+        b.setVisible(true);
+        b.setLabel(text);
+        b.setEnabled(true);
+        return b;
     }
 }
