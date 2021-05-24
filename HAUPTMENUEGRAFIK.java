@@ -7,19 +7,14 @@ class HAUPTMENUEGRAFIK
     Label begrueßung;
     Button start;
 
-    HAUPTMENUEGRAFIK (Frame hauptf)
+    HAUPTMENUEGRAFIK (Frame hauptf, int breite, int hoehe)
     {
         hauptfenster = hauptf;
-        
-        hauptfenster = new Frame();
-        hauptfenster.setSize(1000,500);
-        hauptfenster.setLocation(10,50);
-        hauptfenster.setVisible(true);
-        hauptfenster.setLayout(null);
 
         begrueßung = new Label();
-        begrueßung.setSize(200,50);
-        begrueßung.setLocation(325,150);
+        begrueßung.setSize(200, 50);
+        begrueßung.setLocation(breite/2, hoehe/4);
+        begrueßung.setAlignment(Label.CENTER);
         begrueßung.setVisible(true);
         begrueßung.setText("Herzlich Willkommen und viel Spaß!");
         begrueßung.setEnabled(true);
@@ -27,8 +22,8 @@ class HAUPTMENUEGRAFIK
         hauptfenster.add(begrueßung);
 
         start = new Button();
-        start.setSize(120,50);
-        start.setLocation(375,250);
+        start.setSize(120, 50);
+        start.setLocation(375, 250);
         start.setVisible(true);
         start.setLabel("Spiel starten");
         start.setEnabled(true);
@@ -43,7 +38,7 @@ class HAUPTMENUEGRAFIK
 
         // start.setVisible(false);
         // start.setEnabled(false);
-        
+
         hauptfenster.removeAll();
     }
 }

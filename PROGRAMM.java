@@ -23,8 +23,8 @@ class PROGRAMM
         }
 
         
-        KATEGORIE k = quiz.kategorien.get(0);
-        FRAGE f = k.Zufallsfrage();
+        // KATEGORIE k = quiz.kategorien.get(0);
+        // FRAGE f = k.Zufallsfrage();
         
         Frame frame = new Frame();
         
