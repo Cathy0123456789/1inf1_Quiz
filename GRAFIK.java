@@ -16,11 +16,10 @@ class GRAFIK
     GRAFIK(Frame f)
     {
         frame = f;
-        
+
         FrameGroesseAnpassen();
 
-        // HauptmenueHinzufuegen();
-        QuizgrafikHinzufuegen();
+        HauptmenueHinzufuegen();
 
         // Fenster mit "X" schließen können
         frame.addWindowListener(new WindowAdapter()
@@ -53,6 +52,25 @@ class GRAFIK
     void HauptmenueHinzufuegen()
     {
         hauptmenue = new HAUPTMENUEGRAFIK(frame, breite, hoehe);
+
+        // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht und die
+        // Fragen angezeigt
+        hauptmenue.start.addMouseListener(new MouseListener()
+            {
+                public void mousePressed(MouseEvent me) {}
+
+                public void mouseReleased(MouseEvent me) {}
+
+                public void mouseClicked(MouseEvent me)
+                {
+                    Uebermalen();
+                    QuizgrafikHinzufuegen();
+                }
+
+                public void mouseExited(MouseEvent me) {}
+
+                public void mouseEntered(MouseEvent me) {}
+            });
     }
 
     /*

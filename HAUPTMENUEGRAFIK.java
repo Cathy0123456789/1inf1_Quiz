@@ -30,23 +30,6 @@ class HAUPTMENUEGRAFIK
         start.setVisible(true);
         start.setEnabled(true);
 
-        // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht
-        start.addMouseListener(new MouseListener()
-            {
-                public void mousePressed(MouseEvent me) {}
-
-                public void mouseReleased(MouseEvent me) {}
-
-                public void mouseClicked(MouseEvent me)
-                {
-                    hauptfenster.removeAll();
-                }
-
-                public void mouseExited(MouseEvent me) {}
-
-                public void mouseEntered(MouseEvent me) {}
-            });
-
         hauptfenster.add(start);
     }
 }
