@@ -7,29 +7,28 @@ class GRAFIK
     HAUPTMENUEGRAFIK hauptmenue;
     Frame frame;
 
-    // Weite des Bildschirms
+    // Weite des Bildschirms in Pixel
     int breite;
 
-    // Hoehe des Bildschirms
+    // Hoehe des Bildschirms in Pixel
     int hoehe;
 
     GRAFIK(Frame f)
     {
         frame = f;
-
+        frame.setLocation(0, 0);
+        frame.setVisible(true);
+        frame.setLayout(null);
         FrameGroesseAnpassen();
 
         HauptmenueHinzufuegen();
 
-        // Fenster mit "X" schließen können
-        frame.addWindowListener(new WindowAdapter()
-            {
-                public void windowClosing(WindowEvent e)
-                {
-                    System.exit(1);
-                }
-            }); 
+        Schließen();
     }
+
+    /**
+     * Findet Bildschirmgroesse heraus und passt Fenster-Groesse entsprechend an
+     */
 
     void FrameGroesseAnpassen()
     {
@@ -38,23 +37,24 @@ class GRAFIK
         breite = screenSize.width;
         hoehe = screenSize.height;
 
-        // neues Fenster in Groesse des Bildschirms oeffnen
+        // Fenster-Groesse = Bildschirm-Groesse setzen
         frame.setSize(screenSize);
-        frame.setLocation(0, 0);
-        frame.setVisible(true);
-        frame.setLayout(null);
 
         // nur zum Test:
         // System.out.println(breite);
         // System.out.println(hoehe);
     }
 
+    /**
+     * Erstellt eine neue Hauptmenue-Oberflaeche, die sich durch Druecken eines
+     * Buttons selbst uebermalt und eine Quizgrafik-Oberfläche erstellt
+     */
+
     void HauptmenueHinzufuegen()
     {
         hauptmenue = new HAUPTMENUEGRAFIK(frame, breite, hoehe);
 
-        // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht und die
-        // Fragen angezeigt
+        // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht und die Fragen angezeigt
         hauptmenue.start.addMouseListener(new MouseListener()
             {
                 public void mousePressed(MouseEvent me) {}
@@ -73,7 +73,16 @@ class GRAFIK
             });
     }
 
-    /*
+    /**
+     * Erstellt eine neue Quizgrafik-Oberflaeche
+     */
+
+    void QuizgrafikHinzufuegen()
+    {
+        QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe);
+    }
+
+    /**
      * Loescht alle Inhalte des Frames
      */
 
@@ -82,8 +91,18 @@ class GRAFIK
         frame.removeAll();   
     }
 
-    void QuizgrafikHinzufuegen()
+    /**
+     * Fenster mit "X" schließen können
+     */
+    
+    void Schließen()
     {
-        QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe);
+        frame.addWindowListener(new WindowAdapter()
+            {
+                public void windowClosing(WindowEvent e)
+                {
+                    System.exit(1);
+                }
+            }); 
     }
 }

@@ -15,7 +15,7 @@ class KATEGORIE
         fragen = new ArrayList<FRAGE>();
     }
 
-    /*
+    /**
      * Liest Fragen aus dem Ordner mit dem jeweiligen Kategorien-Name ein
      */
 
@@ -39,10 +39,11 @@ class KATEGORIE
         }
     }
 
-    /*
-     * Sucht eine zufaellige Frage aus der Kategorie aus und gibt sie zurueck
+    /**
+     * Aussuchen einer zufaelligen Frage aus der Kategorie
+     * @return zufaellige Frage
      */
-    
+
     FRAGE Zufallsfrage()
     {
         int x = (int)(Math.random() * fragen.size());

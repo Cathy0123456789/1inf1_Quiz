@@ -19,8 +19,10 @@ class FRAGE
         antworten = new String [4];
     }
 
-    /*
-     * Ueberpruefung, ob eingegebene Antwort der richtigen Loesung entspricht
+    /**
+     * Vergleich der eingegebenen Antwort mit der richtigen Loesung
+     * @param antwort die zu vergleichende Antwort
+     * @return wahr, falls eingegebene Antwort richtig
      */
 
     boolean IstAntwortRichtig(int antwort)
@@ -35,7 +37,7 @@ class FRAGE
         }
     }
 
-    /*
+    /**
      * Ausgabe der Frage sowie der 4 Antwortmoeglichkeiten auf der Konsole
      */
 
@@ -48,8 +50,9 @@ class FRAGE
         }
     }
 
-    /*
+    /**
      * Speichert den Inhalt einer Textdatei in Attributen ab
+     * @param datei die einzulesende Datei
      */
 
     void DateiInhaltLesen(String datei)

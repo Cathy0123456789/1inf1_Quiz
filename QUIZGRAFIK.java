@@ -25,8 +25,9 @@ class QUIZGRAFIK
 
         antwortButtonBreite = (int) (0.4 * breite);
         antwortButtonHoehe = hoehe/10;
-
         int abstandSeite = (int) (0.07 * breite);
+
+        // 4 Antwort-Buttons
         antwort1 = neueAntwort(abstandSeite, (int) (0.6 * hoehe), "Antwort 1");
         antwort2 = neueAntwort(breite - abstandSeite - antwortButtonBreite , antwort1.getY(), "Antwort 2");
         antwort3 = neueAntwort(abstandSeite, antwort1.getY() + antwortButtonHoehe + hoehe/20, "Antwort 3");
@@ -37,6 +38,7 @@ class QUIZGRAFIK
         quizfenster.add(antwort3);
         quizfenster.add(antwort4);
 
+        // "Frage:"
         fragenAnzeige = new Label();
         fragenAnzeige.setSize(breite/25, hoehe/40);
         fragenAnzeige.setLocation(breite/2 - fragenAnzeige.getSize().width/2, hoehe/5);
@@ -46,6 +48,14 @@ class QUIZGRAFIK
         fragenAnzeige.setEnabled(true);
         quizfenster.add(fragenAnzeige);
     }
+
+    /**
+     * Vorlage zum Erstellen eines Antwort-Buttons
+     * @param xPosition x-Position des Buttons
+     * @param xPosition y-Position des Buttons
+     * @param text Text-Anzeige des Buttons
+     * @return neuen Button
+     */
 
     Button neueAntwort(int xPosition, int yPosition, String text)
     {

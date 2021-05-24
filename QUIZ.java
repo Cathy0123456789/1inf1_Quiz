@@ -14,14 +14,14 @@ class QUIZ
         kategorien = new ArrayList<KATEGORIE>();
     }
 
-    /*
+    /**
      * Liest Ordner-Namen (= Kategorien) aus dem Ordner "Fragen" ein
      */
-    
+
     void KategorienEinlesen()
     {
         File[] directories = new File("Fragen").listFiles(File::isDirectory);
-        
+
         for (File i : directories)
         {
             String kat = i.toString();
