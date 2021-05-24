@@ -12,33 +12,39 @@ class HAUPTMENUEGRAFIK
         hauptfenster = hauptf;
 
         begrueßung = new Label();
-        begrueßung.setSize(200, 50);
-        begrueßung.setLocation(breite/2, hoehe/4);
-        begrueßung.setAlignment(Label.CENTER);
-        begrueßung.setVisible(true);
+        begrueßung.setSize(breite/3, hoehe/20);
+        begrueßung.setLocation(breite/3, hoehe/3);
+        begrueßung.setFont(new Font("Willkommen", Font.ITALIC, breite/50));
         begrueßung.setText("Herzlich Willkommen und viel Spaß!");
+        begrueßung.setVisible(true);
         begrueßung.setEnabled(true);
 
         hauptfenster.add(begrueßung);
 
         start = new Button();
-        start.setSize(120, 50);
-        start.setLocation(375, 250);
-        start.setVisible(true);
+        start.setSize(breite/10, hoehe/10);
+        start.setLocation((int) (0.45 * breite), (int) (0.45 * hoehe));
         start.setLabel("Spiel starten");
+        start.setVisible(true);
         start.setEnabled(true);
 
+        // Wenn Start Button gedrueckt wird, wird Frame weiß
+        start.addMouseListener(new MouseListener()
+            {
+                public void mousePressed(MouseEvent me) {}
+
+                public void mouseReleased(MouseEvent me) {}
+
+                public void mouseClicked(MouseEvent me)
+                {
+                    hauptfenster.removeAll();
+                }
+
+                public void mouseExited(MouseEvent me) {}
+
+                public void mouseEntered(MouseEvent me) {}
+            });
+
         hauptfenster.add(start);
-    }
-
-    void Ausblenden()
-    {
-        // begrueßung.setVisible(false);
-        // begrueßung.setEnabled(false);
-
-        // start.setVisible(false);
-        // start.setEnabled(false);
-
-        hauptfenster.removeAll();
     }
 }
