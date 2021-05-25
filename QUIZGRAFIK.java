@@ -3,10 +3,8 @@ import java.awt.event.*;
 
 class QUIZGRAFIK
 {
-    Button antwort1;
-    Button antwort2;
-    Button antwort3;
-    Button antwort4;
+    Button[] antworten;
+    int gedrueckterButton;
     Label fragenAnzeige;
     Label frage;
 
@@ -28,16 +26,37 @@ class QUIZGRAFIK
         antwortButtonHoehe = hoehe/10;
         int abstandSeite = (int) (0.07 * breite);
 
-        // 4 Antwort-Buttons
-        antwort1 = neueAntwort(abstandSeite, (int) (0.6 * hoehe), "Antwort 1");
-        antwort2 = neueAntwort(breite - abstandSeite - antwortButtonBreite , antwort1.getY(), "Antwort 2");
-        antwort3 = neueAntwort(abstandSeite, antwort1.getY() + antwortButtonHoehe + hoehe/20, "Antwort 3");
-        antwort4 = neueAntwort(antwort2.getX(), antwort3.getY(), "Antwort 4");
+        antworten = new Button[4];
 
-        quizfenster.add(antwort1);
-        quizfenster.add(antwort2);
-        quizfenster.add(antwort3);
-        quizfenster.add(antwort4);
+        // 4 Antwort-Buttons
+        antworten[0] = neueAntwort(abstandSeite, (int) (0.6 * hoehe));
+        antworten[1] = neueAntwort(breite - abstandSeite - antwortButtonBreite , antworten[0].getY());
+        antworten[2] = neueAntwort(abstandSeite, antworten[0].getY() + antwortButtonHoehe + hoehe/20);
+        antworten[3] = neueAntwort(antworten[1].getX(), antworten[2].getY());
+
+        for (Button i : antworten)
+        {
+            quizfenster.add(i);
+            i.addMouseListener(new MouseListener()
+                {
+                    public void mousePressed(MouseEvent me) {}
+
+                    public void mouseReleased(MouseEvent me) {}
+
+                    public void mouseClicked(MouseEvent me)
+                    {
+                        i.setBackground(Color.GREEN);
+                        for (Button j : antworten)
+                        {
+                            j.removeMouseListener(j.getMouseListeners()[0]);
+                        }
+                    }
+
+                    public void mouseExited(MouseEvent me) {}
+
+                    public void mouseEntered(MouseEvent me) {}
+                });
+        }
 
         // "Frage:"
         fragenAnzeige = new Label();
@@ -52,7 +71,7 @@ class QUIZGRAFIK
 
         // Frage
         frage = new Label();
-        frage.setSize(breite, hoehe/40);
+        frage.setSize(breite, antwortButtonHoehe/2);
         frage.setAlignment(Label.CENTER);
         frage.setLocation(0, hoehe/4);
         frage.setFont(new Font("Frage", Font.BOLD, antwortButtonHoehe/4));
@@ -69,13 +88,12 @@ class QUIZGRAFIK
      * @return neuen Button
      */
 
-    Button neueAntwort(int xPosition, int yPosition, String text)
+    Button neueAntwort(int xPosition, int yPosition)
     {
         Button b = new Button();
         b.setSize(antwortButtonBreite, antwortButtonHoehe);
         b.setLocation(xPosition, yPosition);
         b.setFont(new Font("Antworten", Font.PLAIN, antwortButtonHoehe/5));
-        b.setLabel(text);
         b.setVisible(true);
         b.setEnabled(true);
         return b;
@@ -84,9 +102,9 @@ class QUIZGRAFIK
     void FrageAnzeigen(FRAGE f)
     {
         frage.setText(f.frage);
-        antwort1.setLabel(f.antworten[0]);
-        antwort2.setLabel(f.antworten[1]);
-        antwort3.setLabel(f.antworten[2]);
-        antwort4.setLabel(f.antworten[3]);
+        for (int i = 0; i < antworten.length; i++)
+        {
+            antworten[i].setLabel(f.antworten[i]);
+        }
     }
 }

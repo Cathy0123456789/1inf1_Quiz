@@ -92,10 +92,16 @@ class GRAFIK
         frame.removeAll();   
     }
 
+    void naechsteFrage(FRAGE f)
+    {
+        Uebermalen();
+        QuizgrafikHinzufuegen(f);
+    }
+
     /**
      * Fenster mit "X" schließen können
      */
-    
+
     void Schließen()
     {
         frame.addWindowListener(new WindowAdapter()

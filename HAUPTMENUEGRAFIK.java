@@ -25,9 +25,10 @@ class HAUPTMENUEGRAFIK
 
         // Button zum Starten des Spiels
         start = new Button();
-        start.setSize(breite/10, hoehe/10);
+        start.setSize(breite/10, hoehe/15);
         start.setLocation((int) (0.45 * breite), (int) (0.45 * hoehe));
         start.setLabel("Spiel starten");
+        start.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
         start.setVisible(true);
         start.setEnabled(true);
 

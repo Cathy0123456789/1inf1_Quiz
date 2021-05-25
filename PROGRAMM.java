@@ -22,22 +22,21 @@ class PROGRAMM
         {
             kat.FragenEinlesen();
         }
-        
+
         KATEGORIE k = quiz.kategorien.get(0);
-        
+
         ausgewaehlteFragen = new FRAGE[quiz.fragenanzahl];
-        
+
         for (int i = 0; i < ausgewaehlteFragen.length; i++)
         {
             int a = k.Zufallsfrage();
             ausgewaehlteFragen[i] = k.fragen.get(a);
             k.fragen.remove(a);
         }
-        
-        // f.FrageAusgeben();
-        
+
         Frame frame = new Frame();
-        
-        grafik1 = new GRAFIK(frame, ausgewaehlteFragen[0]);        
+
+        grafik1 = new GRAFIK(frame, ausgewaehlteFragen[0]);
+        // grafik1.naechsteFrage(ausgewaehlteFragen[1]);
     }
 }
