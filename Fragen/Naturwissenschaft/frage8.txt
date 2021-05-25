@@ -1,0 +1,7 @@
+Was gibt ein Mol an?
+Anzahl der Protonen in einem Atom
+Anzahl der Neutronen in einem Atom
+Masse eines Atoms
+Anzahl der Elektronen in einem Atom
+3
+2

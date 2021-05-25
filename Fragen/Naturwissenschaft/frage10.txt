@@ -1,0 +1,7 @@
+Wie hoch ist der absolute Temperaturtiefpunkt (in °C)?
+- 1000
+- 347,98
+- 243,98
+- 273,15
+4
+2

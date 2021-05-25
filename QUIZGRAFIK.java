@@ -103,7 +103,7 @@ class QUIZGRAFIK
         {
             j.removeMouseListener(j.getMouseListeners()[0]);
         }
-        if (gedrueckterButton.getLabel().equals(frage.antworten[frage.richtigeAntwort]))
+        if (gedrueckterButton.getLabel().equals(frage.antworten[frage.richtigeAntwort-1]))
         {
             gedrueckterButton.setBackground(Color.GREEN);
         }

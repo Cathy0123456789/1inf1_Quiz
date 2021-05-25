@@ -23,7 +23,7 @@ class PROGRAMM
             kat.FragenEinlesen();
         }
 
-        KATEGORIE k = quiz.kategorien.get(0);
+        KATEGORIE k = quiz.kategorien.get(3);
 
         ausgewaehlteFragen = new FRAGE[quiz.fragenanzahl];
 

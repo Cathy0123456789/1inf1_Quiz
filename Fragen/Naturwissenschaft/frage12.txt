@@ -1,0 +1,7 @@
+Was bedeutet die Zahl Pi = 3,141... in Bezug auf einen Kreis?
+Durchmesser/Umfang
+Umfang/Durchmesser
+Umfang/Radius
+Radius/Umfang
+2
+1
