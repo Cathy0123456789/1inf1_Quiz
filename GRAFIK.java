@@ -47,7 +47,7 @@ class GRAFIK
 
     /**
      * Erstellt eine neue Hauptmenue-Oberflaeche, die sich durch Druecken eines
-     * Buttons selbst uebermalt und eine Quizgrafik-Oberfläche erstellt
+     * Buttons selbst uebermalt und eine Quizgrafik-Oberflaeche erstellt
      */
 
     void HauptmenueHinzufuegen(FRAGE f)

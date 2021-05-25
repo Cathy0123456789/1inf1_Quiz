@@ -9,12 +9,13 @@ class QUIZGRAFIK
     // vom Spieler ausgewaehlte Antwort
     Button gedrueckterButton;
 
+    // Frage, die derzeit angezeigt wird
     FRAGE frage;
+    // "physische" Anzeige der Frage
     Label fragenAnzeige;
 
     // Breite des Bildschirms
     int breite;
-
     // Hoehe des Bildschirms
     int hoehe;
 
@@ -41,6 +42,8 @@ class QUIZGRAFIK
         for (Button i : antworten)
         {
             quizfenster.add(i);
+            
+            // Schauen, ob Antwort-Button angeklickt wird
             i.addMouseListener(new MouseListener()
                 {
                     public void mousePressed(MouseEvent me) {}
@@ -90,7 +93,8 @@ class QUIZGRAFIK
     }
 
     /**
-     * Was passiert, wenn eine Antwort vom Spieler ausgewählt wird
+     * Vergleich der angeklickten Antwort mit der richtigen und entsprechende Gruen-
+     * bzw. Rotfaerbung des Buttons
      */
 
     void AntwortAngeklickt()
