@@ -92,7 +92,7 @@ class GRAFIK
         frame.removeAll();   
     }
 
-    void naechsteFrage(FRAGE f)
+    void NaechsteFrage(FRAGE f)
     {
         Uebermalen();
         QuizgrafikHinzufuegen(f);

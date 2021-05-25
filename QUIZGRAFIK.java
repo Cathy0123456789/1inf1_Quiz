@@ -3,10 +3,14 @@ import java.awt.event.*;
 
 class QUIZGRAFIK
 {
+    // Antwort-Buttons
     Button[] antworten;
-    int gedrueckterButton;
+
+    // vom Spieler ausgewaehlte Antwort
+    Button gedrueckterButton;
+
+    FRAGE frage;
     Label fragenAnzeige;
-    Label frage;
 
     // Breite des Bildschirms
     int breite;
@@ -29,10 +33,10 @@ class QUIZGRAFIK
         antworten = new Button[4];
 
         // 4 Antwort-Buttons
-        antworten[0] = neueAntwort(abstandSeite, (int) (0.6 * hoehe));
-        antworten[1] = neueAntwort(breite - abstandSeite - antwortButtonBreite , antworten[0].getY());
-        antworten[2] = neueAntwort(abstandSeite, antworten[0].getY() + antwortButtonHoehe + hoehe/20);
-        antworten[3] = neueAntwort(antworten[1].getX(), antworten[2].getY());
+        antworten[0] = NeueAntwort(abstandSeite, (int) (0.6 * hoehe));
+        antworten[1] = NeueAntwort(breite - abstandSeite - antwortButtonBreite , antworten[0].getY());
+        antworten[2] = NeueAntwort(abstandSeite, antworten[0].getY() + antwortButtonHoehe + hoehe/20);
+        antworten[3] = NeueAntwort(antworten[1].getX(), antworten[2].getY());
 
         for (Button i : antworten)
         {
@@ -45,11 +49,8 @@ class QUIZGRAFIK
 
                     public void mouseClicked(MouseEvent me)
                     {
-                        i.setBackground(Color.GREEN);
-                        for (Button j : antworten)
-                        {
-                            j.removeMouseListener(j.getMouseListeners()[0]);
-                        }
+                        gedrueckterButton = i;
+                        AntwortAngeklickt();
                     }
 
                     public void mouseExited(MouseEvent me) {}
@@ -58,26 +59,15 @@ class QUIZGRAFIK
                 });
         }
 
-        // "Frage:"
+        // Frage
         fragenAnzeige = new Label();
-        fragenAnzeige.setSize(breite, hoehe/40);
+        fragenAnzeige.setSize(breite, antwortButtonHoehe/2);
         fragenAnzeige.setAlignment(Label.CENTER);
-        fragenAnzeige.setLocation(0, hoehe/5);
-        fragenAnzeige.setFont(new Font("FragenAnzeige", Font.ITALIC, breite/75));
-        fragenAnzeige.setText("Frage:");
+        fragenAnzeige.setLocation(0, hoehe/4);
+        fragenAnzeige.setFont(new Font("Frage", Font.BOLD, antwortButtonHoehe/4));
         fragenAnzeige.setVisible(true);
         fragenAnzeige.setEnabled(true);
         quizfenster.add(fragenAnzeige);
-
-        // Frage
-        frage = new Label();
-        frage.setSize(breite, antwortButtonHoehe/2);
-        frage.setAlignment(Label.CENTER);
-        frage.setLocation(0, hoehe/4);
-        frage.setFont(new Font("Frage", Font.BOLD, antwortButtonHoehe/4));
-        frage.setVisible(true);
-        frage.setEnabled(true);
-        quizfenster.add(frage);
     }
 
     /**
@@ -88,7 +78,7 @@ class QUIZGRAFIK
      * @return neuen Button
      */
 
-    Button neueAntwort(int xPosition, int yPosition)
+    Button NeueAntwort(int xPosition, int yPosition)
     {
         Button b = new Button();
         b.setSize(antwortButtonBreite, antwortButtonHoehe);
@@ -99,9 +89,35 @@ class QUIZGRAFIK
         return b;
     }
 
+    /**
+     * Was passiert, wenn eine Antwort vom Spieler ausgewählt wird
+     */
+
+    void AntwortAngeklickt()
+    {
+        for (Button j : antworten)
+        {
+            j.removeMouseListener(j.getMouseListeners()[0]);
+        }
+        if (gedrueckterButton.getLabel().equals(frage.antworten[frage.richtigeAntwort]))
+        {
+            gedrueckterButton.setBackground(Color.GREEN);
+        }
+        else
+        {
+            gedrueckterButton.setBackground(Color.RED);
+        }
+    }
+
+    /**
+     * Zeigt Frage und Antwortauswahlmöglichkeiten an
+     * @param f Frage, die angezeigt werden soll
+     */
+
     void FrageAnzeigen(FRAGE f)
     {
-        frage.setText(f.frage);
+        frage = f;
+        fragenAnzeige.setText(frage.frage);
         for (int i = 0; i < antworten.length; i++)
         {
             antworten[i].setLabel(f.antworten[i]);
