@@ -6,6 +6,7 @@ class PROGRAMM
     int punkte;
     int[] highscore;
     static QUIZ quiz;
+    static FRAGE[] ausgewaehlteFragen;
     static GRAFIK grafik1;
 
     public static void main(String args[])
@@ -21,13 +22,22 @@ class PROGRAMM
         {
             kat.FragenEinlesen();
         }
-
         
-        // KATEGORIE k = quiz.kategorien.get(0);
-        // FRAGE f = k.Zufallsfrage();
+        KATEGORIE k = quiz.kategorien.get(0);
+        
+        ausgewaehlteFragen = new FRAGE[quiz.fragenanzahl];
+        
+        for (int i = 0; i < ausgewaehlteFragen.length; i++)
+        {
+            int a = k.Zufallsfrage();
+            ausgewaehlteFragen[i] = k.fragen.get(a);
+            k.fragen.remove(a);
+        }
+        
+        // f.FrageAusgeben();
         
         Frame frame = new Frame();
         
-        grafik1 = new GRAFIK(frame);
+        grafik1 = new GRAFIK(frame, ausgewaehlteFragen[0]);        
     }
 }

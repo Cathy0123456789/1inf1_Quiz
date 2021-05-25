@@ -8,6 +8,7 @@ class QUIZGRAFIK
     Button antwort3;
     Button antwort4;
     Label fragenAnzeige;
+    Label frage;
 
     // Breite des Bildschirms
     int breite;
@@ -40,13 +41,24 @@ class QUIZGRAFIK
 
         // "Frage:"
         fragenAnzeige = new Label();
-        fragenAnzeige.setSize(breite/25, hoehe/40);
-        fragenAnzeige.setLocation(breite/2 - fragenAnzeige.getSize().width/2, hoehe/5);
-        fragenAnzeige.setFont(new Font("Frage", Font.ITALIC, breite/75));
+        fragenAnzeige.setSize(breite, hoehe/40);
+        fragenAnzeige.setAlignment(Label.CENTER);
+        fragenAnzeige.setLocation(0, hoehe/5);
+        fragenAnzeige.setFont(new Font("FragenAnzeige", Font.ITALIC, breite/75));
         fragenAnzeige.setText("Frage:");
         fragenAnzeige.setVisible(true);
         fragenAnzeige.setEnabled(true);
         quizfenster.add(fragenAnzeige);
+
+        // Frage
+        frage = new Label();
+        frage.setSize(breite, hoehe/40);
+        frage.setAlignment(Label.CENTER);
+        frage.setLocation(0, hoehe/4);
+        frage.setFont(new Font("Frage", Font.BOLD, antwortButtonHoehe/4));
+        frage.setVisible(true);
+        frage.setEnabled(true);
+        quizfenster.add(frage);
     }
 
     /**
@@ -62,9 +74,19 @@ class QUIZGRAFIK
         Button b = new Button();
         b.setSize(antwortButtonBreite, antwortButtonHoehe);
         b.setLocation(xPosition, yPosition);
-        b.setVisible(true);
+        b.setFont(new Font("Antworten", Font.PLAIN, antwortButtonHoehe/5));
         b.setLabel(text);
+        b.setVisible(true);
         b.setEnabled(true);
         return b;
+    }
+
+    void FrageAnzeigen(FRAGE f)
+    {
+        frage.setText(f.frage);
+        antwort1.setLabel(f.antworten[0]);
+        antwort2.setLabel(f.antworten[1]);
+        antwort3.setLabel(f.antworten[2]);
+        antwort4.setLabel(f.antworten[3]);
     }
 }

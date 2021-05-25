@@ -13,7 +13,7 @@ class GRAFIK
     // Hoehe des Bildschirms in Pixel
     int hoehe;
 
-    GRAFIK(Frame f)
+    GRAFIK(Frame f, FRAGE fr)
     {
         frame = f;
         frame.setLocation(0, 0);
@@ -21,7 +21,7 @@ class GRAFIK
         frame.setLayout(null);
         FrameGroesseAnpassen();
 
-        HauptmenueHinzufuegen();
+        HauptmenueHinzufuegen(fr);
 
         Schließen();
     }
@@ -50,7 +50,7 @@ class GRAFIK
      * Buttons selbst uebermalt und eine Quizgrafik-Oberfläche erstellt
      */
 
-    void HauptmenueHinzufuegen()
+    void HauptmenueHinzufuegen(FRAGE f)
     {
         hauptmenue = new HAUPTMENUEGRAFIK(frame, breite, hoehe);
 
@@ -64,7 +64,7 @@ class GRAFIK
                 public void mouseClicked(MouseEvent me)
                 {
                     Uebermalen();
-                    QuizgrafikHinzufuegen();
+                    QuizgrafikHinzufuegen(f);
                 }
 
                 public void mouseExited(MouseEvent me) {}
@@ -77,9 +77,10 @@ class GRAFIK
      * Erstellt eine neue Quizgrafik-Oberflaeche
      */
 
-    void QuizgrafikHinzufuegen()
+    void QuizgrafikHinzufuegen(FRAGE f)
     {
         QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe);
+        quiz.FrageAnzeigen(f);
     }
 
     /**

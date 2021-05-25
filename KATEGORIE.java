@@ -44,9 +44,9 @@ class KATEGORIE
      * @return zufaellige Frage
      */
 
-    FRAGE Zufallsfrage()
+    int Zufallsfrage()
     {
         int x = (int)(Math.random() * fragen.size());
-        return fragen.get(x);
+        return x;
     }
 }

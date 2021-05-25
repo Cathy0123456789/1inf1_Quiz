@@ -10,11 +10,12 @@ class HAUPTMENUEGRAFIK
     HAUPTMENUEGRAFIK (Frame hauptf, int breite, int hoehe)
     {
         hauptfenster = hauptf;
-        
+
         // "Herzlich Willkommen und viel Spaß"
         begrueßung = new Label();
-        begrueßung.setSize(breite/3, hoehe/20);
-        begrueßung.setLocation(breite/3, hoehe/3);
+        begrueßung.setSize(breite, hoehe/20);
+        begrueßung.setAlignment(Label.CENTER);
+        begrueßung.setLocation(0, hoehe/3);
         begrueßung.setFont(new Font("Willkommen", Font.ITALIC, breite/50));
         begrueßung.setText("Herzlich Willkommen und viel Spaß!");
         begrueßung.setVisible(true);
