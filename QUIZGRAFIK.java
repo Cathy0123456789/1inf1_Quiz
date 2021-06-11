@@ -22,6 +22,7 @@ class QUIZGRAFIK
     int antwortButtonBreite;
     int antwortButtonHoehe;
 
+    
     QUIZGRAFIK (Frame quizfenster, int breite, int hoehe)
     {
         this.breite = breite;
@@ -42,7 +43,7 @@ class QUIZGRAFIK
         for (Button i : antworten)
         {
             quizfenster.add(i);
-            
+
             // Schauen, ob Antwort-Button angeklickt wird
             i.addMouseListener(new MouseListener()
                 {
@@ -111,8 +112,9 @@ class QUIZGRAFIK
         {
             gedrueckterButton.setBackground(Color.RED);
         }
+        
     }
-
+    
     /**
      * Zeigt Frage und Antwortauswahlmöglichkeiten an
      * @param f Frage, die angezeigt werden soll
