@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.Dimension;
 
-class GRAFIK
+public class GRAFIK
 {
     HAUPTMENUEGRAFIK hauptmenue;
     Frame frame;
@@ -92,7 +92,7 @@ class GRAFIK
         frame.removeAll();   
     }
 
-    void NaechsteFrage(FRAGE f)
+    public void NaechsteFrage(FRAGE f)
     {
         Uebermalen();
         QuizgrafikHinzufuegen(f);
