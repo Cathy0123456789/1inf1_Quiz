@@ -73,6 +73,7 @@ public class GRAFIK
             });
     }
 
+
     /**
      * Erstellt eine neue Quizgrafik-Oberflaeche
      */
