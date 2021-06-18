@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.Dimension;
 
-public class GRAFIK
+class GRAFIK
 {
     HAUPTMENUEGRAFIK hauptmenue;
     Frame frame;
@@ -13,15 +13,19 @@ public class GRAFIK
     // Hoehe des Bildschirms in Pixel
     int hoehe;
 
-    GRAFIK(Frame f, FRAGE fr)
+    FRAGE[] fragen;
+
+    GRAFIK(Frame f, FRAGE[] fr)
     {
         frame = f;
+        fragen = fr;
+
         frame.setLocation(0, 0);
         frame.setVisible(true);
         frame.setLayout(null);
         FrameGroesseAnpassen();
 
-        HauptmenueHinzufuegen(fr);
+        HauptmenueHinzufuegen();
 
         Schließen();
     }
@@ -50,7 +54,7 @@ public class GRAFIK
      * Buttons selbst uebermalt und eine Quizgrafik-Oberflaeche erstellt
      */
 
-    void HauptmenueHinzufuegen(FRAGE f)
+    void HauptmenueHinzufuegen()
     {
         hauptmenue = new HAUPTMENUEGRAFIK(frame, breite, hoehe);
 
@@ -63,8 +67,8 @@ public class GRAFIK
 
                 public void mouseClicked(MouseEvent me)
                 {
-                    Uebermalen();
-                    QuizgrafikHinzufuegen(f);
+                    frame.removeAll();
+                    QuizgrafikHinzufuegen();
                 }
 
                 public void mouseExited(MouseEvent me) {}
@@ -73,30 +77,14 @@ public class GRAFIK
             });
     }
 
-
     /**
      * Erstellt eine neue Quizgrafik-Oberflaeche
      */
 
-    void QuizgrafikHinzufuegen(FRAGE f)
+    void QuizgrafikHinzufuegen()
     {
-        QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe);
-        quiz.FrageAnzeigen(f);
-    }
-
-    /**
-     * Loescht alle Inhalte des Frames
-     */
-
-    void Uebermalen()
-    {
-        frame.removeAll();   
-    }
-
-    public void NaechsteFrage(FRAGE f)
-    {
-        Uebermalen();
-        QuizgrafikHinzufuegen(f);
+        QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe, fragen);
+        quiz.FrageAnzeigen(fragen[0]);
     }
 
     /**

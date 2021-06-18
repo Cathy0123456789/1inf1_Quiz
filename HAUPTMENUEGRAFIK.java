@@ -6,7 +6,6 @@ class HAUPTMENUEGRAFIK
     Frame hauptfenster;
     Label begrueßung;
     Button start;
-  
 
     HAUPTMENUEGRAFIK (Frame hauptf, int breite, int hoehe)
     {
@@ -34,7 +33,5 @@ class HAUPTMENUEGRAFIK
         start.setEnabled(true);
 
         hauptfenster.add(start);
-        
-      
     }
 }
