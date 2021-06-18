@@ -41,7 +41,7 @@ public class GRAFIK
         frame.setSize(screenSize);
 
         // nur zum Test:
-        //System.out.println(breite);
+        // System.out.println(breite);
         // System.out.println(hoehe);
     }
 
