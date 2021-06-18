@@ -111,6 +111,7 @@ class QUIZGRAFIK
         {
             gedrueckterButton.setBackground(Color.RED);
         }
+       
     }
 
     /**

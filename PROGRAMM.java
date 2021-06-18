@@ -37,6 +37,8 @@ class PROGRAMM
         Frame frame = new Frame();
 
         grafik1 = new GRAFIK(frame, ausgewaehlteFragen[0]);
-        // grafik1.NaechsteFrage(ausgewaehlteFragen[1]);
+        
+        //grafik1.NaechsteFrage(ausgewaehlteFragen[1]);
     }
+    
 }
