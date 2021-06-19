@@ -13,6 +13,7 @@ class GRAFIK
     // Hoehe des Bildschirms in Pixel
     int hoehe;
 
+    // Array mit Fragen
     FRAGE[] fragen;
 
     GRAFIK(Frame f, FRAGE[] fr)
@@ -43,10 +44,6 @@ class GRAFIK
 
         // Fenster-Groesse = Bildschirm-Groesse setzen
         frame.setSize(screenSize);
-
-        // nur zum Test:
-        // System.out.println(breite);
-        // System.out.println(hoehe);
     }
 
     /**
@@ -78,7 +75,7 @@ class GRAFIK
     }
 
     /**
-     * Erstellt eine neue Quizgrafik-Oberflaeche
+     * Erstellt eine neue Quizgrafik-Oberflaeche und zeigt erste Frage an
      */
 
     void QuizgrafikHinzufuegen()

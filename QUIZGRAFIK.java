@@ -20,11 +20,15 @@ class QUIZGRAFIK
     int breite;
     // Hoehe des Bildschirms
     int hoehe;
-
+    
+    // Breite des Antwort-Buttons
     int antwortButtonBreite;
+    // Hoehe des Antwort-Buttons
     int antwortButtonHoehe;
 
+    // Array mit den zu stellenden Fragen
     FRAGE[] fragen;
+    // Position der gestellten Frage
     int nummer = 0;
 
     QUIZGRAFIK (Frame frame, int breite, int hoehe, FRAGE[] fragen)
@@ -86,6 +90,12 @@ class QUIZGRAFIK
         b.setBackground(Color.LIGHT_GRAY);
         return b;
     }
+    
+    /**
+     * Fuegt MouseListener fuer Button hinzu, welcher bei Anklicken des Buttons 
+     * weiteres ausloest
+     * @param b Button, auf den der MouseListener angewendet werden soll
+     */
 
     void MouseListenerHinzufuegen(Button b)
     {
@@ -110,33 +120,48 @@ class QUIZGRAFIK
 
     /**
      * Vergleich der angeklickten Antwort mit der richtigen und entsprechende Gruen-
-     * bzw. Rotfaerbung des Buttons
+     * bzw. Rotfaerbung des Buttons, dann Weiterschaltung zur naechsten Frage
      */
 
     void AntwortAngeklickt()
     {
+        // Verhinderung des Anklickens eines weiteren Buttons
         for (Button j : antworten)
         {
             j.removeMouseListener(j.getMouseListeners()[0]);
         }
+        
+        // angeklickte Antwort blinkt zweimal gelb
+        for (int i = 0; i < 2; i++)
+        {
+            gedrueckterButton.setBackground(Color.YELLOW);
+            warten(500);
+            gedrueckterButton.setBackground(Color.LIGHT_GRAY);
+            warten(500);
+        }
 
         if (gedrueckterButton.getLabel().equals(frage.antworten[frage.richtigeAntwort-1]))
         {
+            // falls Antwort richtig, Gruenfaerbung
             gedrueckterButton.setBackground(Color.GREEN);
         }
         else
         {
+            // falls Antwort falsch, Rotfaerbung & Gruenfaerbung der richtigen Antwort
             gedrueckterButton.setBackground(Color.RED);
+            warten(1000);
+            for (Button j : antworten)
+            {
+                if(j.getLabel().equals(frage.antworten[frage.richtigeAntwort-1]))
+                {
+                    j.setBackground(Color.GREEN);
+                }
+            }
         }
 
-        try{
-            Thread.sleep(3000);
-        }
-        catch (InterruptedException e)
-        {
+        warten(2000);
 
-        }
-
+        // zur naechsten Frage wechseln, falls es noch eine gibt, ansonsten Ende anzeigen
         if (nummer < (fragen.length - 1))
         {
             NaechsteFrage();
@@ -146,6 +171,18 @@ class QUIZGRAFIK
             frame.removeAll();
             ENDGRAFIK ende = new ENDGRAFIK(frame, breite, hoehe);
         }
+    }
+
+    /**
+     * Wartet eingegebene Zeit und macht nichts
+     * @param zeit Zeit, die gewartet werden soll
+     */
+    
+    void warten(int zeit)
+    {
+        try{
+            Thread.sleep(zeit);
+        } catch (InterruptedException e) {}
     }
 
     /**
@@ -162,6 +199,10 @@ class QUIZGRAFIK
             antworten[i].setLabel(f.antworten[i]);
         }
     }
+    
+    /**
+     * Zeigt naechste Frage an
+     */
 
     void NaechsteFrage()
     {

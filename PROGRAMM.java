@@ -24,7 +24,8 @@ class PROGRAMM
         }
 
         KATEGORIE k = quiz.kategorien.get(3);
-
+        
+        // Array mit den Fragen, die gestellt werden sollen
         ausgewaehlteFragen = new FRAGE[quiz.fragenanzahl];
 
         for (int i = 0; i < ausgewaehlteFragen.length; i++)
