@@ -29,7 +29,9 @@ class QUIZGRAFIK
     // Array mit den zu stellenden Fragen
     FRAGE[] fragen;
     // Position der gestellten Frage
-    int nummer = 0;
+    int nummer;
+    
+    PUNKTE punkte;
 
     QUIZGRAFIK (Frame frame, int breite, int hoehe, FRAGE[] fragen)
     {
@@ -37,6 +39,10 @@ class QUIZGRAFIK
         this.breite = breite;
         this.hoehe = hoehe;
         this.fragen = fragen;
+        
+        nummer = 0;
+        
+        punkte = new PUNKTE(frame, breite, hoehe);
 
         antwortButtonBreite = (int) (0.4 * breite);
         antwortButtonHoehe = hoehe/10;
@@ -144,6 +150,8 @@ class QUIZGRAFIK
         {
             // falls Antwort richtig, Gruenfaerbung
             gedrueckterButton.setBackground(Color.GREEN);
+            // Punkteanzahl erhoehen
+            punkte.punkteHinzufuegen(frage.schweregrad * 10);
         }
         else
         {
@@ -169,7 +177,7 @@ class QUIZGRAFIK
         else
         {
             frame.removeAll();
-            ENDGRAFIK ende = new ENDGRAFIK(frame, breite, hoehe);
+            ENDGRAFIK ende = new ENDGRAFIK(frame, breite, hoehe, punkte.punkte);
         }
     }
 
