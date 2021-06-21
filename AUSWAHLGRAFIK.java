@@ -13,9 +13,10 @@ class AUSWAHLGRAFIK
     // // Checkbox geographie;
 
 
-    AUSWAHLGRAFIK (Frame hauptf, int breite, int hoehe, ArrayList<KATEGORIE> kategorie)
 
+    AUSWAHLGRAFIK (Frame hauptf, int breite, int hoehe, ArrayList<KATEGORIE> kategorie)
     {
+
         hauptfenster = hauptf;
 
         kategorie.get(0);
