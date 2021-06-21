@@ -2,7 +2,7 @@
 import java.awt.*;
 import java.awt.event.*;
 
-class HAUPTMENUEGRAFIK
+class AUSWAHLGRAFIK
 {
     Frame hauptfenster;
     
@@ -11,7 +11,7 @@ class HAUPTMENUEGRAFIK
     Checkbox Geschichte;
     Checkbox geographie;
 
-    HAUPTMENUEGRAFIK (Frame hauptf, int breite, int hoehe)
+    AUSWAHLGRAFIK (Frame hauptf, int breite, int hoehe)
     {
         
         hauptfenster.add(start);
