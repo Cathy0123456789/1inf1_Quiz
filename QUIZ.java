@@ -3,7 +3,7 @@ import java.io.File;
 
 class QUIZ
 {
-    ArrayList<KATEGORIE> kategorien;
+    public ArrayList<KATEGORIE> kategorien;
 
     // Fragenanzahl pro Quiz
     int fragenanzahl;

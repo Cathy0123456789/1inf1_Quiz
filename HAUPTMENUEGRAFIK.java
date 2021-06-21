@@ -3,14 +3,13 @@ import java.awt.event.*;
 
 class HAUPTMENUEGRAFIK
 {
-    Frame hauptfenster;
+    Frame frame;
     Label begrueßung;
     Button start;
-  
 
-    HAUPTMENUEGRAFIK (Frame hauptf, int breite, int hoehe)
+    HAUPTMENUEGRAFIK (Frame frame, int breite, int hoehe)
     {
-        hauptfenster = hauptf;
+        this.frame = frame;
 
         // "Herzlich Willkommen und viel Spaß"
         begrueßung = new Label();
@@ -22,7 +21,7 @@ class HAUPTMENUEGRAFIK
         begrueßung.setVisible(true);
         begrueßung.setEnabled(true);
 
-        hauptfenster.add(begrueßung);
+        frame.add(begrueßung);
 
         // Button zum Starten des Spiels
         start = new Button();
@@ -33,8 +32,6 @@ class HAUPTMENUEGRAFIK
         start.setVisible(true);
         start.setEnabled(true);
 
-        hauptfenster.add(start);
-        
-      
+        frame.add(start);
     }
 }

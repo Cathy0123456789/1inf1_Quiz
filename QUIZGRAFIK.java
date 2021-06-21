@@ -14,19 +14,35 @@ class QUIZGRAFIK
     // "physische" Anzeige der Frage
     Label fragenAnzeige;
 
+    Frame frame;
+
     // Breite des Bildschirms
     int breite;
     // Hoehe des Bildschirms
     int hoehe;
-
+    
+    // Breite des Antwort-Buttons
     int antwortButtonBreite;
+    // Hoehe des Antwort-Buttons
     int antwortButtonHoehe;
 
+    // Array mit den zu stellenden Fragen
+    FRAGE[] fragen;
+    // Position der gestellten Frage
+    int nummer;
     
-    QUIZGRAFIK (Frame quizfenster, int breite, int hoehe)
+    PUNKTE punkte;
+
+    QUIZGRAFIK (Frame frame, int breite, int hoehe, FRAGE[] fragen)
     {
+        this.frame = frame;
         this.breite = breite;
         this.hoehe = hoehe;
+        this.fragen = fragen;
+        
+        nummer = 0;
+        
+        punkte = new PUNKTE(frame, breite, hoehe);
 
         antwortButtonBreite = (int) (0.4 * breite);
         antwortButtonHoehe = hoehe/10;
@@ -42,25 +58,10 @@ class QUIZGRAFIK
 
         for (Button i : antworten)
         {
-            quizfenster.add(i);
+            frame.add(i);
 
             // Schauen, ob Antwort-Button angeklickt wird
-            i.addMouseListener(new MouseListener()
-                {
-                    public void mousePressed(MouseEvent me) {}
-
-                    public void mouseReleased(MouseEvent me) {}
-
-                    public void mouseClicked(MouseEvent me)
-                    {
-                        gedrueckterButton = i;
-                        AntwortAngeklickt();
-                    }
-
-                    public void mouseExited(MouseEvent me) {}
-
-                    public void mouseEntered(MouseEvent me) {}
-                });
+            MouseListenerHinzufuegen(i);
         }
 
         // Frage
@@ -71,7 +72,9 @@ class QUIZGRAFIK
         fragenAnzeige.setFont(new Font("Frage", Font.BOLD, antwortButtonHoehe/4));
         fragenAnzeige.setVisible(true);
         fragenAnzeige.setEnabled(true);
-        quizfenster.add(fragenAnzeige);
+        frame.add(fragenAnzeige);
+
+        FrageAnzeigen(fragen[nummer]);
     }
 
     /**
@@ -90,30 +93,106 @@ class QUIZGRAFIK
         b.setFont(new Font("Antworten", Font.PLAIN, antwortButtonHoehe/5));
         b.setVisible(true);
         b.setEnabled(true);
+        b.setBackground(Color.LIGHT_GRAY);
         return b;
+    }
+    
+    /**
+     * Fuegt MouseListener fuer Button hinzu, welcher bei Anklicken des Buttons 
+     * weiteres ausloest
+     * @param b Button, auf den der MouseListener angewendet werden soll
+     */
+
+    void MouseListenerHinzufuegen(Button b)
+    {
+        b.addMouseListener(new MouseListener()
+            {
+                public void mousePressed(MouseEvent me) {}
+
+                public void mouseReleased(MouseEvent me) {}
+
+                public void mouseClicked(MouseEvent me)
+                {
+                    gedrueckterButton = b;
+                    AntwortAngeklickt();
+                }
+
+                public void mouseExited(MouseEvent me) {}
+
+                public void mouseEntered(MouseEvent me) {}
+            });
+
     }
 
     /**
      * Vergleich der angeklickten Antwort mit der richtigen und entsprechende Gruen-
-     * bzw. Rotfaerbung des Buttons
+     * bzw. Rotfaerbung des Buttons, dann Weiterschaltung zur naechsten Frage
      */
 
     void AntwortAngeklickt()
     {
+        // Verhinderung des Anklickens eines weiteren Buttons
         for (Button j : antworten)
         {
             j.removeMouseListener(j.getMouseListeners()[0]);
         }
+        
+        // angeklickte Antwort blinkt zweimal gelb
+        for (int i = 0; i < 2; i++)
+        {
+            gedrueckterButton.setBackground(Color.YELLOW);
+            warten(500);
+            gedrueckterButton.setBackground(Color.LIGHT_GRAY);
+            warten(500);
+        }
+
         if (gedrueckterButton.getLabel().equals(frage.antworten[frage.richtigeAntwort-1]))
         {
+            // falls Antwort richtig, Gruenfaerbung
             gedrueckterButton.setBackground(Color.GREEN);
+            // Punkteanzahl erhoehen
+            punkte.punkteHinzufuegen(frage.schweregrad * 10);
         }
         else
         {
+            // falls Antwort falsch, Rotfaerbung & Gruenfaerbung der richtigen Antwort
             gedrueckterButton.setBackground(Color.RED);
+            warten(1000);
+            for (Button j : antworten)
+            {
+                if(j.getLabel().equals(frage.antworten[frage.richtigeAntwort-1]))
+                {
+                    j.setBackground(Color.GREEN);
+                }
+            }
+        }
+
+        warten(2000);
+
+        // zur naechsten Frage wechseln, falls es noch eine gibt, ansonsten Ende anzeigen
+        if (nummer < (fragen.length - 1))
+        {
+            NaechsteFrage();
+        }
+        else
+        {
+            frame.removeAll();
+            ENDGRAFIK ende = new ENDGRAFIK(frame, breite, hoehe, punkte.punkte);
         }
     }
+
+    /**
+     * Wartet eingegebene Zeit und macht nichts
+     * @param zeit Zeit, die gewartet werden soll
+     */
     
+    void warten(int zeit)
+    {
+        try{
+            Thread.sleep(zeit);
+        } catch (InterruptedException e) {}
+    }
+
     /**
      * Zeigt Frage und Antwortauswahlmöglichkeiten an
      * @param f Frage, die angezeigt werden soll
@@ -126,6 +205,21 @@ class QUIZGRAFIK
         for (int i = 0; i < antworten.length; i++)
         {
             antworten[i].setLabel(f.antworten[i]);
+        }
+    }
+    
+    /**
+     * Zeigt naechste Frage an
+     */
+
+    void NaechsteFrage()
+    {
+        nummer++;
+        FrageAnzeigen(fragen[nummer]);
+        for (Button i : antworten)
+        {
+            i.setBackground(Color.LIGHT_GRAY);
+            MouseListenerHinzufuegen(i);
         }
     }
 }

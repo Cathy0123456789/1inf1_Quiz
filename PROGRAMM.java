@@ -24,7 +24,8 @@ class PROGRAMM
         }
 
         KATEGORIE k = quiz.kategorien.get(3);
-
+        
+        // Array mit den Fragen, die gestellt werden sollen
         ausgewaehlteFragen = new FRAGE[quiz.fragenanzahl];
 
         for (int i = 0; i < ausgewaehlteFragen.length; i++)
@@ -36,9 +37,6 @@ class PROGRAMM
 
         Frame frame = new Frame();
 
-        grafik1 = new GRAFIK(frame, ausgewaehlteFragen[0]);
-        
-        //grafik1.NaechsteFrage(ausgewaehlteFragen[1]);
+        grafik1 = new GRAFIK(frame, ausgewaehlteFragen);
     }
-    
 }
