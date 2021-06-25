@@ -37,6 +37,6 @@ class PROGRAMM
 
         Frame frame = new Frame();
 
-        grafik1 = new GRAFIK(frame, ausgewaehlteFragen);
+        grafik1 = new GRAFIK(frame, ausgewaehlteFragen, quiz.kategorien);
     }
 }
