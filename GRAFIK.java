@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 class GRAFIK
 {
@@ -14,9 +15,9 @@ class GRAFIK
     int hoehe;
 
     // Array mit Fragen
-    FRAGE[] fragen;
+    ArrayList<FRAGE> fragen;
 
-    GRAFIK(Frame f, FRAGE[] fr)
+    GRAFIK(Frame f, ArrayList<FRAGE> fr)
     {
         frame = f;
         fragen = fr;
@@ -81,7 +82,7 @@ class GRAFIK
     void QuizgrafikHinzufuegen()
     {
         QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe, fragen);
-        quiz.FrageAnzeigen(fragen[0]);
+        quiz.FrageAnzeigen(fragen.get(0));
     }
 
     /**
