@@ -24,10 +24,9 @@ class PROGRAMM
             kat.FragenEinlesen();
         }
 
-        KATEGORIE k = quiz.kategorien.get(3);
-
+        KATEGORIE k = quiz.kategorien.get(0);
+ 
         // Anzahl Fragen nach Schwierigkeitsgrad: 2-2-3-2-1
-
         // Array mit den Fragen, die gestellt werden sollen
         zuStellendeFragen = new ArrayList<FRAGE>();
 
@@ -54,7 +53,7 @@ class PROGRAMM
 
         Frame frame = new Frame();
 
-        grafik1 = new GRAFIK(frame, zuStellendeFragen);
+        grafik1 = new GRAFIK(frame, zuStellendeFragen, quiz.kategorien);
     }
 
     private static int Zufallsfrage(ArrayList al)

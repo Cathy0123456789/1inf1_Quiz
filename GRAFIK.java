@@ -6,6 +6,7 @@ import java.util.ArrayList;
 class GRAFIK
 {
     HAUPTMENUEGRAFIK hauptmenue;
+    AUSWAHLGRAFIK auswahl;
     Frame frame;
 
     // Weite des Bildschirms in Pixel
@@ -17,10 +18,14 @@ class GRAFIK
     // Array mit Fragen
     ArrayList<FRAGE> fragen;
 
-    GRAFIK(Frame f, ArrayList<FRAGE> fr)
+    // ArrayList mit Kategorien
+    ArrayList<KATEGORIE> kategorien;
+
+    GRAFIK(Frame f, ArrayList<FRAGE> fr, ArrayList<KATEGORIE> kat)
     {
         frame = f;
         fragen = fr;
+        kategorien = kat;
 
         frame.setLocation(0, 0);
         frame.setVisible(true);
@@ -58,6 +63,33 @@ class GRAFIK
 
         // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht und die Fragen angezeigt
         hauptmenue.start.addMouseListener(new MouseListener()
+            {
+                public void mousePressed(MouseEvent me) {}
+
+                public void mouseReleased(MouseEvent me) {}
+
+                public void mouseClicked(MouseEvent me)
+                {
+                    frame.removeAll();
+                    AuswahlgrafikHinzufuegen();
+                }
+
+                public void mouseExited(MouseEvent me) {}
+
+                public void mouseEntered(MouseEvent me) {}
+            });
+    }
+
+    /**
+     * Erstellt eine neue Auswahlgrafik-Oberflaeche und zeigt erste Frage an
+     */
+
+    void AuswahlgrafikHinzufuegen()
+    {
+        auswahl = new AUSWAHLGRAFIK(frame, breite, hoehe, kategorien);
+        
+        // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht und die Fragen angezeigt
+        auswahl.start.addMouseListener(new MouseListener()
             {
                 public void mousePressed(MouseEvent me) {}
 
