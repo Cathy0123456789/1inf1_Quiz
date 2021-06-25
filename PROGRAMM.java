@@ -12,7 +12,7 @@ class PROGRAMM
     public static void main(String args[])
     {
         // neues Quiz mit 5 Fragen
-        quiz = new QUIZ(5);
+        quiz = new QUIZ(10);
 
         // Kategorien aus dem Ordner "Fragen" einlesen
         quiz.KategorienEinlesen();
@@ -23,7 +23,7 @@ class PROGRAMM
             kat.FragenEinlesen();
         }
 
-        KATEGORIE k = quiz.kategorien.get(3);
+        KATEGORIE k = quiz.kategorien.get(0);
         
         // Array mit den Fragen, die gestellt werden sollen
         ausgewaehlteFragen = new FRAGE[quiz.fragenanzahl];

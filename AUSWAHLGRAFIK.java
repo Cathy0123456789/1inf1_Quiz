@@ -16,8 +16,11 @@ class AUSWAHLGRAFIK
     
    
 
+
+
     AUSWAHLGRAFIK (Frame hauptf, int breite, int hoehe, ArrayList<KATEGORIE> kategorie)
     {
+
         hauptfenster = hauptf;
 
         // Button zum Starten des Spiels
