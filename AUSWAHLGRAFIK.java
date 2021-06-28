@@ -39,67 +39,77 @@ class AUSWAHLGRAFIK
 
         hauptfenster.add(start);
        
-        int j = kategorie.size();
+        // int j = kategorie.size();
         
-        test = new Checkbox();   
-        test.setSize(breite/5, hoehe/10);
-        test.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
-        test.setLabel(kategorie.get(j).name);
-        test.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
-        test.setVisible(true);
-        test.setEnabled(true);
+        // test = new Checkbox();   
+        // test.setSize(breite/5, hoehe/10);
+        // test.setLocation((int) (0.5 * breite), (int) (0.6 * hoehe + 20 * j));
+        // test.setLabel(kategorie.get(j).name);
+        // test.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
+        // test.setVisible(true);
+        // test.setEnabled(true);
             
-        hauptfenster.add(test);
+        // hauptfenster.add(test);
         
-        test1 = new Checkbox();   
-        test1.setSize(breite/5, hoehe/10);
-        test1.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
-        test1.setLabel(kategorie.get(j).name);
-        test1.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
-        test1.setVisible(true);
-        test1.setEnabled(true);
-            
-        hauptfenster.add(test1);
+        // j = j -1;
         
-        test2 = new Checkbox();   
-        test2.setSize(breite/5, hoehe/10);
-        test2.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
-        test2.setLabel(kategorie.get(j).name);
-        test2.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
-        test2.setVisible(true);
-        test2.setEnabled(true);
+        // test1 = new Checkbox();   
+        // test1.setSize(breite/5, hoehe/10);
+        // test1.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
+        // test1.setLabel(kategorie.get(j).name);
+        // test1.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
+        // test1.setVisible(true);
+        // test1.setEnabled(true);
             
-        hauptfenster.add(test2);
+        // hauptfenster.add(test1);
         
-        test3 = new Checkbox();   
-        test3.setSize(breite/5, hoehe/10);
-        test3.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
-        test3.setLabel(kategorie.get(j).name);
-        test3.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
-        test3.setVisible(true);
-        test3.setEnabled(true);
-            
-        hauptfenster.add(test3);
+        // j = j -1;
         
-        test4 = new Checkbox();   
-        test4.setSize(breite/5, hoehe/10);
-        test4.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
-        test4.setLabel(kategorie.get(j).name);
-        test4.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
-        test4.setVisible(true);
-        test4.setEnabled(true);
+        // test2 = new Checkbox();   
+        // test2.setSize(breite/5, hoehe/10);
+        // test2.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
+        // test2.setLabel(kategorie.get(j).name);
+        // test2.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
+        // test2.setVisible(true);
+        // test2.setEnabled(true);
             
-        hauptfenster.add(test4);
+        // hauptfenster.add(test2);
         
-        test5 = new Checkbox();   
-        test5.setSize(breite/5, hoehe/10);
-        test5.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
-        test5.setLabel(kategorie.get(j).name);
-        test5.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
-        test5.setVisible(true);
-        test5.setEnabled(true);
+        // j = j -1;
+        
+        // test3 = new Checkbox();   
+        // test3.setSize(breite/5, hoehe/10);
+        // test3.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
+        // test3.setLabel(kategorie.get(j).name);
+        // test3.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
+        // test3.setVisible(true);
+        // test3.setEnabled(true);
             
-        hauptfenster.add(test5);
+        // hauptfenster.add(test3);
+        
+        // j = j -1;
+        
+        // test4 = new Checkbox();   
+        // test4.setSize(breite/5, hoehe/10);
+        // test4.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
+        // test4.setLabel(kategorie.get(j).name);
+        // test4.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
+        // test4.setVisible(true);
+        // test4.setEnabled(true);
+            
+        // hauptfenster.add(test4);
+        
+        // j = j -1;
+        
+        // test5 = new Checkbox();   
+        // test5.setSize(breite/5, hoehe/10);
+        // test5.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
+        // test5.setLabel(kategorie.get(j).name);
+        // test5.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
+        // test5.setVisible(true);
+        // test5.setEnabled(true);
+            
+        // hauptfenster.add(test5);
         
         for (int i=0; i<kategorie.size(); i++)
         {
