@@ -44,7 +44,7 @@ class PROGRAMM
             }
         }
 
-        for (int p = 1; p < anzahlFragen.length; p++)
+        for (int p = 1; p <= anzahlFragen.length; p++)
         {
             ArrayList<FRAGE> ausgewaehlteFragen = new ArrayList<FRAGE>();
             for (FRAGE f : alleFragen)
