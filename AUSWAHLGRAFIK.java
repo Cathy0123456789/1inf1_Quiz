@@ -34,6 +34,17 @@ class AUSWAHLGRAFIK
 
         hauptfenster.add(start);
        
+        int j = kategorie.size();
+        
+        test = new Checkbox();   
+        test.setSize(breite/5, hoehe/10);
+        test.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 20 * j));
+        test.setLabel(kategorie.get(j).name);
+        test.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
+        test.setVisible(true);
+        test.setEnabled(true);
+            
+        hauptfenster.add(test);
         
         for (int i=0; i<kategorie.size(); i++)
         {
