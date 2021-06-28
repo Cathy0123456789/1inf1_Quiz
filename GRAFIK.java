@@ -16,12 +16,12 @@ class GRAFIK
     int hoehe;
 
     // Array mit Fragen
-    FRAGE[] fragen;
+    ArrayList<FRAGE> fragen;
 
     // ArrayList mit Kategorien
     ArrayList<KATEGORIE> kategorien;
 
-    GRAFIK(Frame f, FRAGE[] fr, ArrayList<KATEGORIE> kat)
+    GRAFIK(Frame f, ArrayList<FRAGE> fr, ArrayList<KATEGORIE> kat)
     {
         frame = f;
         fragen = fr;
@@ -114,7 +114,7 @@ class GRAFIK
     void QuizgrafikHinzufuegen()
     {
         QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe, fragen);
-        quiz.FrageAnzeigen(fragen[0]);
+        quiz.FrageAnzeigen(fragen.get(0));
     }
 
     /**

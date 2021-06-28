@@ -1,5 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 class QUIZGRAFIK
 {
@@ -27,13 +28,13 @@ class QUIZGRAFIK
     int antwortButtonHoehe;
 
     // Array mit den zu stellenden Fragen
-    FRAGE[] fragen;
+    ArrayList<FRAGE> fragen;
     // Position der gestellten Frage
     int nummer;
     
     PUNKTE punkte;
 
-    QUIZGRAFIK (Frame frame, int breite, int hoehe, FRAGE[] fragen)
+    QUIZGRAFIK (Frame frame, int breite, int hoehe, ArrayList<FRAGE> fragen)
     {
         this.frame = frame;
         this.breite = breite;
@@ -74,7 +75,7 @@ class QUIZGRAFIK
         fragenAnzeige.setEnabled(true);
         frame.add(fragenAnzeige);
 
-        FrageAnzeigen(fragen[nummer]);
+        FrageAnzeigen(fragen.get(nummer));
     }
 
     /**
@@ -170,7 +171,7 @@ class QUIZGRAFIK
         warten(2000);
 
         // zur naechsten Frage wechseln, falls es noch eine gibt, ansonsten Ende anzeigen
-        if (nummer < (fragen.length - 1))
+        if (nummer < (fragen.size() - 1))
         {
             NaechsteFrage();
         }
@@ -215,7 +216,7 @@ class QUIZGRAFIK
     void NaechsteFrage()
     {
         nummer++;
-        FrageAnzeigen(fragen[nummer]);
+        FrageAnzeigen(fragen.get(nummer));
         for (Button i : antworten)
         {
             i.setBackground(Color.LIGHT_GRAY);
