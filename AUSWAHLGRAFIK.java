@@ -16,7 +16,7 @@ class AUSWAHLGRAFIK
         // Button zum Starten des Spiels
         start = new Button();
         start.setSize(breite/10, hoehe/15);
-        start.setLocation((int) (0.45 * breite), (int) (0.45 * hoehe));
+        start.setLocation((int) (0.45 * breite), (int) (0.7 * hoehe));
         start.setLabel("Spiel starten");
         start.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
         start.setVisible(true);
@@ -35,8 +35,8 @@ class AUSWAHLGRAFIK
 
         for (Checkbox c : checks)
         {            
-            c.setSize(breite/5, hoehe/20);
-            c.setLocation((int) (0.6 * breite), (int) (0.6 * hoehe + 50 * nummer));
+            c.setSize(breite/5, hoehe/25);
+            c.setLocation((int) (0.45 * breite), (int) (0.3 * hoehe + 40 * nummer));
             c.setLabel(kategorie.get(nummer).name);
             c.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
             c.setVisible(true);
