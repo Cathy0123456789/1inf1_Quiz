@@ -7,6 +7,7 @@ class PROGRAMM
     int punkte;
     int[] highscore;
     static QUIZ quiz;
+    static ArrayList<FRAGE> alleFragen;
     static ArrayList<FRAGE> zuStellendeFragen;
     static GRAFIK grafik1;
 
@@ -25,17 +26,28 @@ class PROGRAMM
         }
 
         KATEGORIE k = quiz.kategorien.get(0);
- 
-        // Anzahl Fragen nach Schwierigkeitsgrad: 2-2-3-2-1
+
+        // Array mit allen Fragen
+        alleFragen = new ArrayList<FRAGE>();
+
         // Array mit den Fragen, die gestellt werden sollen
         zuStellendeFragen = new ArrayList<FRAGE>();
 
+        // Anzahl Fragen nach Schwierigkeitsgrad: 2-2-3-2-1
         int[] anzahlFragen = {2, 2, 3, 2, 1};
+
+        for (KATEGORIE kat : quiz.kategorien)
+        {
+            for (FRAGE fr : kat.fragen)
+            {
+                alleFragen.add(fr);
+            }
+        }
 
         for (int p = 1; p < anzahlFragen.length; p++)
         {
             ArrayList<FRAGE> ausgewaehlteFragen = new ArrayList<FRAGE>();
-            for (FRAGE f : k.fragen)
+            for (FRAGE f : alleFragen)
             {
                 if (f.schweregrad == p)
                 {
