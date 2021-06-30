@@ -29,8 +29,13 @@ class QUIZGRAFIK
 
     QUIZ quiz;
 
+    // Array mit den Fragen, die gestellt werden sollen
     ArrayList<FRAGE> zuStellendeFragen;
+
+    // ArrayList mit vom Spieler ausgewaehlten Kategorien
     ArrayList<KATEGORIE> ausgewaehlteKat;
+
+    // Verteilung der Fragen auf Schwierigkeitsgrade
     int[] anzahlFragen;
 
     // Position der gestellten Frage
@@ -46,7 +51,7 @@ class QUIZGRAFIK
         this.quiz = quiz;
         this.ausgewaehlteKat = ausgewaehlteKat;
         this.anzahlFragen = anzahlFragen;
-        
+
         zuStellendeFragen = new ArrayList<FRAGE>();
 
         nummer = 0;
@@ -84,6 +89,8 @@ class QUIZGRAFIK
         frame.add(fragenAnzeige);
 
         FragenAuswaehlen();
+        
+        // erste Frage anzeigen
         FrageAnzeigen(zuStellendeFragen.get(nummer));
     }
 
@@ -132,11 +139,16 @@ class QUIZGRAFIK
                 public void mouseEntered(MouseEvent me) {}
             });
     }
+    
+    /**
+     * Auswahl zufaelliger, zu stellende Fragen entsprechend der Quiz-Groesse
+     */
 
     void FragenAuswaehlen()
     {
         ArrayList<FRAGE> alleFragen = new ArrayList<FRAGE>();
-        
+
+        // alle Fragen der ausgewaehlten Kategorien einlesen
         for (KATEGORIE kat : ausgewaehlteKat)
         {
             for (FRAGE fr : kat.fragen)
@@ -144,10 +156,12 @@ class QUIZGRAFIK
                 alleFragen.add(fr);
             }
         }
-        
+
         for (int p = 1; p <= anzahlFragen.length; p++)
         {
             ArrayList<FRAGE> ausgewaehlteFragen = new ArrayList<FRAGE>();
+            
+            // Fragen nach Schweregrad filtern
             for (FRAGE f : alleFragen)
             {
                 if (f.schweregrad == p)
@@ -156,6 +170,7 @@ class QUIZGRAFIK
                 }
             }
 
+            // zufaellige Frage auswaehlen
             for (int i = 0; i < anzahlFragen[p-1]; i++)
             {
                 int a = Zufallsfrage(ausgewaehlteFragen);
@@ -165,6 +180,12 @@ class QUIZGRAFIK
         }
     }
 
+    /**
+     * Auswahl einer Zufallfrage
+     * @param al ArrayList
+     * @return Zahl zwischen 0 und Groesse der eingegebenen ArrayList
+     */
+    
     int Zufallsfrage(ArrayList al)
     {
         int x = (int)(Math.random() * al.size());
@@ -198,7 +219,7 @@ class QUIZGRAFIK
             // falls Antwort richtig, Gruenfaerbung
             gedrueckterButton.setBackground(Color.GREEN);
             // Punkteanzahl erhoehen
-            punkte.punkteHinzufuegen(frage.schweregrad * 10);
+            punkte.PunkteHinzufuegen(frage.schweregrad * 10);
         }
         else
         {

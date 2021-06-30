@@ -8,8 +8,10 @@ class AUSWAHLGRAFIK
     Button start;
     Label kat;
 
+    // ArrayList mit allen Kategorien
     ArrayList<KATEGORIE> kategorie;
 
+    // Checkboxen zum Auswaehlen der zu spielenden Kategorien
     Checkbox[] checks;
 
     AUSWAHLGRAFIK (Frame frame, int breite, int hoehe, ArrayList<KATEGORIE> kategorie)
@@ -28,6 +30,7 @@ class AUSWAHLGRAFIK
 
         frame.add(start);
 
+        // für jede Kategorie eine Checkbox
         checks = new Checkbox[kategorie.size()];
 
         int nummer = 0;
@@ -40,7 +43,7 @@ class AUSWAHLGRAFIK
         for (Checkbox c : checks)
         {            
             c.setSize(breite/5, hoehe/25);
-            c.setLocation((int) (0.45 * breite), (int) (0.6 * hoehe - c.getHeight() * checks.length + 40 * nummer));
+            c.setLocation((int) (0.45 * breite), (int) (0.65 * hoehe - c.getHeight() * checks.length + 40 * nummer));
             c.setLabel(kategorie.get(nummer).name);
             c.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
             c.setVisible(true);
@@ -49,8 +52,8 @@ class AUSWAHLGRAFIK
             frame.add(c);
             nummer++;
         }
-        
-                
+
+        // "Kategorien:"
         kat = new Label();
         kat.setSize(breite, hoehe/20);
         kat.setAlignment(Label.CENTER);
@@ -59,9 +62,14 @@ class AUSWAHLGRAFIK
         kat.setText("Kategorien:");
         kat.setVisible(true);
         kat.setEnabled(true);
-        
+
         frame.add(kat);
     }
+    
+    /**
+     * Liest aus, welche Checkboxen vom Spieler ausgewaehlt wurden
+     * @return ausgewaehlte Kategorien
+     */
 
     ArrayList<KATEGORIE> CheckboxenAuslesen()
     {

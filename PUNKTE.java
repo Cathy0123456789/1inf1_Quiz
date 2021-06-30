@@ -27,7 +27,7 @@ class PUNKTE
      * @param zahl Zahl der hinzuaddierenden Punkte
      */
 
-    void punkteHinzufuegen(int zahl)
+    void PunkteHinzufuegen(int zahl)
     {
         punkte += zahl;
         punkteAnzeige.setText("Punkte: " + punkte);

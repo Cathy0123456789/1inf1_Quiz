@@ -11,6 +11,7 @@ class ENDGRAFIK
     {
         this.frame = frame;
 
+        // "Ende: Du hast __ Punkte erreicht."
         ende = new Label();
         ende.setSize(breite, hoehe/20);
         ende.setAlignment(Label.CENTER);

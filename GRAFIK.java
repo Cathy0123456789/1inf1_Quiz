@@ -5,9 +5,10 @@ import java.util.ArrayList;
 
 class GRAFIK
 {
+    Frame frame;
+
     HAUPTMENUEGRAFIK hauptmenue;
     AUSWAHLGRAFIK auswahl;
-    Frame frame;
 
     // Weite des Bildschirms in Pixel
     int breite;
@@ -17,10 +18,12 @@ class GRAFIK
 
     QUIZ quiz;
 
-    // ArrayList mit Kategorien
+    // ArrayList mit allen Kategorien
     ArrayList<KATEGORIE> kategorien;
-
+    // ArrayList mit vom Spieler ausgewaehlten Kategorien
     ArrayList<KATEGORIE> ausgewaehlteKat;
+    
+    // Verteilung der Fragen auf Schwierigkeitsgrade
     int [] anzahlFragen;
 
     GRAFIK(Frame f, QUIZ quiz, int[] anzahlFragen)
@@ -29,7 +32,8 @@ class GRAFIK
         this.quiz = quiz;
         this.anzahlFragen = anzahlFragen;
         kategorien = quiz.kategorien;
-
+        
+        // neues Fenster erstellen
         frame.setLocation(0, 0);
         frame.setVisible(true);
         frame.setLayout(null);
@@ -64,7 +68,7 @@ class GRAFIK
     {
         hauptmenue = new HAUPTMENUEGRAFIK(frame, breite, hoehe);
 
-        // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht und die Fragen angezeigt
+        // Wenn Button gedrueckt wird, werden Frame-Inhalte geloescht und die Kategorien-Auswahl angezeigt
         hauptmenue.start.addMouseListener(new MouseListener()
             {
                 public void mousePressed(MouseEvent me) {}
@@ -100,6 +104,7 @@ class GRAFIK
 
                 public void mouseClicked(MouseEvent me)
                 {
+                    // Abspeicherung der vom Spieler ausgewaehlten Kategorien
                     ausgewaehlteKat = auswahl.CheckboxenAuslesen();
                     frame.removeAll();
                     QuizgrafikHinzufuegen();
