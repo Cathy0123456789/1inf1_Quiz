@@ -14,7 +14,7 @@ class AUSWAHLGRAFIK
     // Checkboxen zum Auswaehlen der zu spielenden Kategorien
     Checkbox[] checks;
 
-    AUSWAHLGRAFIK (Frame frame, int breite, int hoehe, ArrayList<KATEGORIE> kategorie)
+    AUSWAHLGRAFIK(Frame frame, int breite, int hoehe, ArrayList<KATEGORIE> kategorie)
     {
         this.frame = frame;
         this.kategorie = kategorie;

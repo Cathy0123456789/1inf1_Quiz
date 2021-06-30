@@ -7,7 +7,7 @@ class HAUPTMENUEGRAFIK
     Label begrueßung;
     Button start;
 
-    HAUPTMENUEGRAFIK (Frame frame, int breite, int hoehe)
+    HAUPTMENUEGRAFIK(Frame frame, int breite, int hoehe)
     {
         this.frame = frame;
 

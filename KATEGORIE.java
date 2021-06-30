@@ -36,15 +36,4 @@ class KATEGORIE
             fragen.get(i).DateiInhaltLesen("Fragen\\" + name + "\\" + pfadnamen[i]);
         }
     }
-
-    /**
-     * Aussuchen einer zufaelligen Frage aus der Kategorie
-     * @return zufaellige Frage
-     */
-
-    int Zufallsfrage()
-    {
-        int x = (int)(Math.random() * fragen.size());
-        return x;
-    }
 }

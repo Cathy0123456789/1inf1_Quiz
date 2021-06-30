@@ -30,10 +30,4 @@ class PROGRAMM
 
         grafik1 = new GRAFIK(frame, quiz, anzahlFragen);
     }
-
-    private static int Zufallsfrage(ArrayList al)
-    {
-        int x = (int)(Math.random() * al.size());
-        return x;
-    }
 }

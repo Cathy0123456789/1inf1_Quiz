@@ -7,7 +7,7 @@ class ENDGRAFIK
     Label ende;
     Button start;
 
-    ENDGRAFIK (Frame frame, int breite, int hoehe, int punkte)
+    ENDGRAFIK(Frame frame, int breite, int hoehe, int punkte)
     {
         this.frame = frame;
 
