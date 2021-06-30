@@ -6,6 +6,7 @@ class AUSWAHLGRAFIK
 {
     Frame frame;
     Button start;
+    Label kat;
 
     ArrayList<KATEGORIE> kategorie;
 
@@ -39,7 +40,7 @@ class AUSWAHLGRAFIK
         for (Checkbox c : checks)
         {            
             c.setSize(breite/5, hoehe/25);
-            c.setLocation((int) (0.45 * breite), (int) (0.5 * hoehe - c.getHeight() * checks.length + 40 * nummer));
+            c.setLocation((int) (0.45 * breite), (int) (0.6 * hoehe - c.getHeight() * checks.length + 40 * nummer));
             c.setLabel(kategorie.get(nummer).name);
             c.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
             c.setVisible(true);
@@ -48,6 +49,18 @@ class AUSWAHLGRAFIK
             frame.add(c);
             nummer++;
         }
+        
+                
+        kat = new Label();
+        kat.setSize(breite, hoehe/20);
+        kat.setAlignment(Label.CENTER);
+        kat.setLocation(0, checks[0].getY() - checks[0].getHeight() * 2);
+        kat.setFont(new Font("Kategorien", Font.BOLD, breite/50));
+        kat.setText("Kategorien:");
+        kat.setVisible(true);
+        kat.setEnabled(true);
+        
+        frame.add(kat);
     }
 
     ArrayList<KATEGORIE> CheckboxenAuslesen()
