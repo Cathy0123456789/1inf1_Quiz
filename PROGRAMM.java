@@ -25,8 +25,6 @@ class PROGRAMM
             kat.FragenEinlesen();
         }
 
-        KATEGORIE k = quiz.kategorien.get(0);
-
         // Array mit allen Fragen
         alleFragen = new ArrayList<FRAGE>();
 
@@ -65,7 +63,7 @@ class PROGRAMM
 
         Frame frame = new Frame();
 
-        grafik1 = new GRAFIK(frame, zuStellendeFragen, quiz.kategorien);
+        grafik1 = new GRAFIK(frame, quiz, anzahlFragen);
     }
 
     private static int Zufallsfrage(ArrayList al)

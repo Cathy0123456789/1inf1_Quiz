@@ -7,11 +7,14 @@ class AUSWAHLGRAFIK
     Frame frame;
     Button start;
 
+    ArrayList<KATEGORIE> kategorie;
+
     Checkbox[] checks;
 
     AUSWAHLGRAFIK (Frame frame, int breite, int hoehe, ArrayList<KATEGORIE> kategorie)
     {
         this.frame = frame;
+        this.kategorie = kategorie;
 
         // Button zum Starten des Spiels
         start = new Button();
@@ -36,7 +39,7 @@ class AUSWAHLGRAFIK
         for (Checkbox c : checks)
         {            
             c.setSize(breite/5, hoehe/25);
-            c.setLocation((int) (0.45 * breite), (int) (0.3 * hoehe + 40 * nummer));
+            c.setLocation((int) (0.45 * breite), (int) (0.5 * hoehe - c.getHeight() * checks.length + 40 * nummer));
             c.setLabel(kategorie.get(nummer).name);
             c.setFont(new Font("Antworten", Font.PLAIN, start.getSize().height/5));
             c.setVisible(true);
@@ -45,5 +48,24 @@ class AUSWAHLGRAFIK
             frame.add(c);
             nummer++;
         }
+    }
+
+    ArrayList<KATEGORIE> CheckboxenAuslesen()
+    {
+        ArrayList<KATEGORIE> ausgewaehlteKat = new ArrayList<KATEGORIE>();
+        for (Checkbox c : checks)
+        {
+            if (c.getState())
+            {
+                for (KATEGORIE suche : kategorie)
+                {
+                    if (suche.name.equals(c.getLabel()))
+                    {
+                        ausgewaehlteKat.add(suche);
+                    }
+                }
+            }
+        }
+        return ausgewaehlteKat;
     }
 }

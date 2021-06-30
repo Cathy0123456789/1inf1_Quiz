@@ -21,28 +21,36 @@ class QUIZGRAFIK
     int breite;
     // Hoehe des Bildschirms
     int hoehe;
-    
+
     // Breite des Antwort-Buttons
     int antwortButtonBreite;
     // Hoehe des Antwort-Buttons
     int antwortButtonHoehe;
 
-    // Array mit den zu stellenden Fragen
-    ArrayList<FRAGE> fragen;
+    QUIZ quiz;
+
+    ArrayList<FRAGE> zuStellendeFragen;
+    ArrayList<KATEGORIE> ausgewaehlteKat;
+    int[] anzahlFragen;
+
     // Position der gestellten Frage
     int nummer;
-    
+
     PUNKTE punkte;
 
-    QUIZGRAFIK (Frame frame, int breite, int hoehe, ArrayList<FRAGE> fragen)
+    QUIZGRAFIK (Frame frame, int breite, int hoehe, QUIZ quiz, ArrayList<KATEGORIE> ausgewaehlteKat, int[] anzahlFragen)
     {
         this.frame = frame;
         this.breite = breite;
         this.hoehe = hoehe;
-        this.fragen = fragen;
+        this.quiz = quiz;
+        this.ausgewaehlteKat = ausgewaehlteKat;
+        this.anzahlFragen = anzahlFragen;
         
+        zuStellendeFragen = new ArrayList<FRAGE>();
+
         nummer = 0;
-        
+
         punkte = new PUNKTE(frame, breite, hoehe);
 
         antwortButtonBreite = (int) (0.4 * breite);
@@ -75,7 +83,8 @@ class QUIZGRAFIK
         fragenAnzeige.setEnabled(true);
         frame.add(fragenAnzeige);
 
-        FrageAnzeigen(fragen.get(nummer));
+        FragenAuswaehlen();
+        FrageAnzeigen(zuStellendeFragen.get(nummer));
     }
 
     /**
@@ -97,7 +106,7 @@ class QUIZGRAFIK
         b.setBackground(Color.LIGHT_GRAY);
         return b;
     }
-    
+
     /**
      * Fuegt MouseListener fuer Button hinzu, welcher bei Anklicken des Buttons 
      * weiteres ausloest
@@ -122,7 +131,44 @@ class QUIZGRAFIK
 
                 public void mouseEntered(MouseEvent me) {}
             });
+    }
 
+    void FragenAuswaehlen()
+    {
+        ArrayList<FRAGE> alleFragen = new ArrayList<FRAGE>();
+        
+        for (KATEGORIE kat : ausgewaehlteKat)
+        {
+            for (FRAGE fr : kat.fragen)
+            {
+                alleFragen.add(fr);
+            }
+        }
+        
+        for (int p = 1; p <= anzahlFragen.length; p++)
+        {
+            ArrayList<FRAGE> ausgewaehlteFragen = new ArrayList<FRAGE>();
+            for (FRAGE f : alleFragen)
+            {
+                if (f.schweregrad == p)
+                {
+                    ausgewaehlteFragen.add(f);
+                }
+            }
+
+            for (int i = 0; i < anzahlFragen[p-1]; i++)
+            {
+                int a = Zufallsfrage(ausgewaehlteFragen);
+                zuStellendeFragen.add(ausgewaehlteFragen.get(a));
+                ausgewaehlteFragen.remove(a);
+            }
+        }
+    }
+
+    int Zufallsfrage(ArrayList al)
+    {
+        int x = (int)(Math.random() * al.size());
+        return x;
     }
 
     /**
@@ -137,7 +183,7 @@ class QUIZGRAFIK
         {
             j.removeMouseListener(j.getMouseListeners()[0]);
         }
-        
+
         // angeklickte Antwort blinkt zweimal gelb
         for (int i = 0; i < 2; i++)
         {
@@ -171,7 +217,7 @@ class QUIZGRAFIK
         warten(2000);
 
         // zur naechsten Frage wechseln, falls es noch eine gibt, ansonsten Ende anzeigen
-        if (nummer < (fragen.size() - 1))
+        if (nummer < (zuStellendeFragen.size() - 1))
         {
             NaechsteFrage();
         }
@@ -186,7 +232,7 @@ class QUIZGRAFIK
      * Wartet eingegebene Zeit und macht nichts
      * @param zeit Zeit, die gewartet werden soll
      */
-    
+
     void warten(int zeit)
     {
         try{
@@ -208,7 +254,7 @@ class QUIZGRAFIK
             antworten[i].setLabel(f.antworten[i]);
         }
     }
-    
+
     /**
      * Zeigt naechste Frage an
      */
@@ -216,7 +262,7 @@ class QUIZGRAFIK
     void NaechsteFrage()
     {
         nummer++;
-        FrageAnzeigen(fragen.get(nummer));
+        FrageAnzeigen(zuStellendeFragen.get(nummer));
         for (Button i : antworten)
         {
             i.setBackground(Color.LIGHT_GRAY);

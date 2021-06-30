@@ -15,17 +15,20 @@ class GRAFIK
     // Hoehe des Bildschirms in Pixel
     int hoehe;
 
-    // Array mit Fragen
-    ArrayList<FRAGE> fragen;
+    QUIZ quiz;
 
     // ArrayList mit Kategorien
     ArrayList<KATEGORIE> kategorien;
 
-    GRAFIK(Frame f, ArrayList<FRAGE> fr, ArrayList<KATEGORIE> kat)
+    ArrayList<KATEGORIE> ausgewaehlteKat;
+    int [] anzahlFragen;
+
+    GRAFIK(Frame f, QUIZ quiz, int[] anzahlFragen)
     {
         frame = f;
-        fragen = fr;
-        kategorien = kat;
+        this.quiz = quiz;
+        this.anzahlFragen = anzahlFragen;
+        kategorien = quiz.kategorien;
 
         frame.setLocation(0, 0);
         frame.setVisible(true);
@@ -87,7 +90,7 @@ class GRAFIK
     void AuswahlgrafikHinzufuegen()
     {
         auswahl = new AUSWAHLGRAFIK(frame, breite, hoehe, kategorien);
-        
+
         // Wenn Start Button gedrueckt wird, werden Frame-Inhalte geloescht und die Fragen angezeigt
         auswahl.start.addMouseListener(new MouseListener()
             {
@@ -97,6 +100,7 @@ class GRAFIK
 
                 public void mouseClicked(MouseEvent me)
                 {
+                    ausgewaehlteKat = auswahl.CheckboxenAuslesen();
                     frame.removeAll();
                     QuizgrafikHinzufuegen();
                 }
@@ -113,8 +117,7 @@ class GRAFIK
 
     void QuizgrafikHinzufuegen()
     {
-        QUIZGRAFIK quiz = new QUIZGRAFIK(frame, breite, hoehe, fragen);
-        quiz.FrageAnzeigen(fragen.get(0));
+        QUIZGRAFIK q = new QUIZGRAFIK(frame, breite, hoehe, quiz, ausgewaehlteKat, anzahlFragen);
     }
 
     /**
