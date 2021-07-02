@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 class QUIZGRAFIK
 {
+    Frame frame;
+
+    // Breite des Bildschirms
+    int breite;
+    // Hoehe des Bildschirms
+    int hoehe;
+
     // Antwort-Buttons
     Button[] antworten;
 
@@ -14,13 +21,6 @@ class QUIZGRAFIK
     FRAGE frage;
     // "physische" Anzeige der Frage
     Label fragenAnzeige;
-
-    Frame frame;
-
-    // Breite des Bildschirms
-    int breite;
-    // Hoehe des Bildschirms
-    int hoehe;
 
     // Breite des Antwort-Buttons
     int antwortButtonBreite;
@@ -89,7 +89,7 @@ class QUIZGRAFIK
         frame.add(fragenAnzeige);
 
         FragenAuswaehlen();
-        
+
         // erste Frage anzeigen
         FrageAnzeigen(zuStellendeFragen.get(nummer));
     }
@@ -139,7 +139,7 @@ class QUIZGRAFIK
                 public void mouseEntered(MouseEvent me) {}
             });
     }
-    
+
     /**
      * Auswahl zufaelliger, zu stellende Fragen entsprechend der Quiz-Groesse
      */
@@ -160,7 +160,7 @@ class QUIZGRAFIK
         for (int p = 1; p <= anzahlFragen.length; p++)
         {
             ArrayList<FRAGE> ausgewaehlteFragen = new ArrayList<FRAGE>();
-            
+
             // Fragen nach Schweregrad filtern
             for (FRAGE f : alleFragen)
             {
@@ -185,7 +185,7 @@ class QUIZGRAFIK
      * @param al ArrayList
      * @return Zahl zwischen 0 und Groesse der eingegebenen ArrayList
      */
-    
+
     int Zufallsfrage(ArrayList al)
     {
         int x = (int)(Math.random() * al.size());
@@ -256,13 +256,18 @@ class QUIZGRAFIK
 
     void warten(int zeit)
     {
-        try{
+        try
+        {
             Thread.sleep(zeit);
-        } catch (InterruptedException e) {}
+        }
+        catch (InterruptedException e)
+        {
+        
+        }
     }
 
     /**
-     * Zeigt Frage und Antwortauswahlmöglichkeiten an
+     * Zeigt Frage und Antwortauswahlmoeglichkeiten an
      * @param f Frage, die angezeigt werden soll
      */
 

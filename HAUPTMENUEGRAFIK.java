@@ -5,6 +5,8 @@ class HAUPTMENUEGRAFIK
 {
     Frame frame;
     Label begrueßung;
+
+    // Button zum Starten des Spiels
     Button start;
 
     HAUPTMENUEGRAFIK(Frame frame, int breite, int hoehe)
@@ -23,7 +25,6 @@ class HAUPTMENUEGRAFIK
 
         frame.add(begrueßung);
 
-        // Button zum Starten des Spiels
         start = new Button();
         start.setSize(breite/9, hoehe/15);
         start.setLocation((int) (0.45 * breite), (int) (0.45 * hoehe));

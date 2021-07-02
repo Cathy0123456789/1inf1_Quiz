@@ -5,7 +5,10 @@ import java.util.ArrayList;
 class AUSWAHLGRAFIK
 {
     Frame frame;
+
+    // Button zum Starten des Spiels
     Button start;
+    
     Label kat;
 
     // ArrayList mit allen Kategorien
@@ -19,7 +22,6 @@ class AUSWAHLGRAFIK
         this.frame = frame;
         this.kategorie = kategorie;
 
-        // Button zum Starten des Spiels
         start = new Button();
         start.setSize(breite/10, hoehe/15);
         start.setLocation((int) (0.45 * breite), (int) (0.7 * hoehe));
@@ -68,7 +70,7 @@ class AUSWAHLGRAFIK
     
     /**
      * Liest aus, welche Checkboxen vom Spieler ausgewaehlt wurden
-     * @return ausgewaehlte Kategorien
+     * @return ArrayList mit ausgewaehlten Kategorien
      */
 
     ArrayList<KATEGORIE> CheckboxenAuslesen()

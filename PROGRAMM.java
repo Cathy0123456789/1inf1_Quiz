@@ -1,11 +1,8 @@
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 
 class PROGRAMM
 {
-    int punkte;
-    int[] highscore;
     static QUIZ quiz;
     static GRAFIK grafik1;
 
