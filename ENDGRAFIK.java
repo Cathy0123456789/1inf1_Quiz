@@ -44,7 +44,9 @@ class ENDGRAFIK
 
                 public void mouseClicked(MouseEvent me)
                 {
-                    frame.removeAll();
+                    frame.dispose();
+                    PROGRAMM p = new PROGRAMM();
+                    p.main(new String[1]);
                 }
 
                 public void mouseExited(MouseEvent me) {}
