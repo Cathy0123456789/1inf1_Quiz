@@ -4,12 +4,12 @@ import java.awt.event.*;
 class ENDGRAFIK
 {
     Frame frame;
-    
+
     Label ende;
 
     // Button um zurueck zum Hauptmenue zu gelangen
     Button start;
-    
+
     HIGHSCORE high;
 
     ENDGRAFIK(Frame frame, int breite, int hoehe, int punkte)
@@ -70,11 +70,34 @@ class ENDGRAFIK
                     // eingegebenen Namen in Highscore-Liste einfuegen
                     if (!high.jtext.getText().equals("Namen eingeben"))
                     {
-                        high.name = high.jtext.getText();
-                        high.PunkteErreicht(punkte);
-                        start.setLocation(start.getX(), start.getY() + hoehe/5);
-                        high.HighScoreAnzeigen();
-                        high.b.removeMouseListener(this);
+                        boolean nameExistiert = false;
+                        Label waehlen = new Label();
+
+                        for (String namen : high.spielerNamen)
+                        {
+                            if (high.jtext.getText().equals(namen))
+                            {
+                                nameExistiert = true;
+                                waehlen.setSize(breite/6, hoehe/20);
+                                waehlen.setLocation(breite/8, (int) (0.45 * hoehe));
+                                waehlen.setFont(new Font("new", Font.ITALIC, breite/75));
+                                waehlen.setText("Name existiert bereits");
+                                waehlen.setVisible(true);
+                                waehlen.setEnabled(true);
+                                frame.add(waehlen);
+                                break;
+                            }
+                        }
+                        
+                        if (!nameExistiert)
+                        {
+                            frame.remove(waehlen);
+                            high.name = high.jtext.getText();
+                            high.PunkteErreicht(punkte);
+                            start.setLocation(start.getX(), start.getY() + hoehe/5);
+                            high.HighScoreAnzeigen();
+                            high.b.removeMouseListener(this);
+                        }
                     }
                 }
 
