@@ -44,6 +44,7 @@ class ENDGRAFIK
 
                 public void mouseClicked(MouseEvent me)
                 {
+                    // neues Spiel beginnen
                     frame.dispose();
                     PROGRAMM p = new PROGRAMM();
                     p.main(new String[1]);

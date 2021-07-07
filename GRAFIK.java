@@ -22,7 +22,7 @@ class GRAFIK
     ArrayList<KATEGORIE> kategorien;
     // ArrayList mit vom Spieler ausgewaehlten Kategorien
     ArrayList<KATEGORIE> ausgewaehlteKat;
-    
+
     // Verteilung der Fragen auf Schwierigkeitsgrade
     int [] anzahlFragen;
 
@@ -32,7 +32,7 @@ class GRAFIK
         this.quiz = quiz;
         this.anzahlFragen = anzahlFragen;
         kategorien = quiz.kategorien;
-        
+
         // neues Fenster erstellen
         frame.setLocation(0, 0);
         frame.setVisible(true);
@@ -106,8 +106,23 @@ class GRAFIK
                 {
                     // Abspeicherung der vom Spieler ausgewaehlten Kategorien
                     ausgewaehlteKat = auswahl.CheckboxenAuslesen();
-                    frame.removeAll();
-                    QuizgrafikHinzufuegen();
+                    if (ausgewaehlteKat.size() != 0)
+                    {
+                        frame.removeAll();
+                        QuizgrafikHinzufuegen();
+                    }
+                    else
+                    {
+                        Label auswaehlen = new Label();
+                        auswaehlen.setSize(breite, hoehe/20);
+                        auswaehlen.setAlignment(Label.CENTER);
+                        auswaehlen.setLocation(0, auswahl.start.getY() + hoehe/10);
+                        auswaehlen.setFont(new Font("new", Font.PLAIN, breite/75));
+                        auswaehlen.setText("Bitte mindestens eine Kategorie auswählen :)");
+                        auswaehlen.setVisible(true);
+                        auswaehlen.setEnabled(true);
+                        frame.add(auswaehlen);
+                    }
                 }
 
                 public void mouseExited(MouseEvent me) {}
