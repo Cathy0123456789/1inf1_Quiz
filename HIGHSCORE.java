@@ -89,7 +89,7 @@ class HIGHSCORE
     }
 
     /**
-     * Vergleicht Punkte mit Highscore-Liste und updated sie, wenn nötig
+     * Vergleicht Punkte mit Highscore-Liste und updated sie, wenn noetig
      * @param punkte erreichte Punktzahl
      */
 
@@ -138,7 +138,7 @@ class HIGHSCORE
     }
 
     /**
-     * Zeigt Highscore-Liste auf Grafik-Oberfläche an
+     * Zeigt Highscore-Liste auf Grafik-Oberflaeche an
      */
 
     void HighScoreAnzeigen()
