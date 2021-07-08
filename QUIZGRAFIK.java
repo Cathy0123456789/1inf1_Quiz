@@ -173,7 +173,7 @@ class QUIZGRAFIK
             // zufaellige Frage auswaehlen
             for (int i = 0; i < anzahlFragen[p-1]; i++)
             {
-                int a = Zufallsfrage(ausgewaehlteFragen);
+                int a = Zufallszahl(ausgewaehlteFragen);
                 zuStellendeFragen.add(ausgewaehlteFragen.get(a));
                 ausgewaehlteFragen.remove(a);
             }
@@ -181,12 +181,12 @@ class QUIZGRAFIK
     }
 
     /**
-     * Auswahl einer Zufallfrage
+     * Generierung einer Zufallzahl
      * @param al ArrayList
      * @return Zahl zwischen 0 und Groesse der eingegebenen ArrayList
      */
 
-    int Zufallsfrage(ArrayList al)
+    int Zufallszahl(ArrayList al)
     {
         int x = (int)(Math.random() * al.size());
         return x;
@@ -262,7 +262,7 @@ class QUIZGRAFIK
         }
         catch (InterruptedException e)
         {
-        
+
         }
     }
 
@@ -275,9 +275,18 @@ class QUIZGRAFIK
     {
         frage = f;
         fragenAnzeige.setText(frage.frage);
+
+        ArrayList<Integer> zufall = new ArrayList<Integer>();
         for (int i = 0; i < antworten.length; i++)
         {
-            antworten[i].setLabel(f.antworten[i]);
+            zufall.add(i);
+        }
+        
+        for (int i = 0; i < antworten.length; i++)
+        {
+            int randomNr = Zufallszahl(zufall);
+            antworten[i].setLabel(frage.antworten[zufall.get(randomNr)]);
+            zufall.remove(randomNr);
         }
     }
 
