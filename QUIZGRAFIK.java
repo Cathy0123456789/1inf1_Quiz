@@ -17,6 +17,8 @@ class QUIZGRAFIK
     // vom Spieler ausgewaehlte Antwort
     Button gedrueckterButton;
 
+    Button Joker;
+
     // Frage, die derzeit angezeigt wird
     FRAGE frage;
     // "physische" Anzeige der Frage
@@ -78,6 +80,8 @@ class QUIZGRAFIK
             MouseListenerHinzufuegen(i);
         }
 
+        JokerHizufuegen();
+
         // Frage
         fragenAnzeige = new Label();
         fragenAnzeige.setSize(breite, antwortButtonHoehe/2);
@@ -138,6 +142,55 @@ class QUIZGRAFIK
 
                 public void mouseEntered(MouseEvent me) {}
             });
+    }
+
+    void JokerHizufuegen()
+    {
+        Joker = new Button();
+        Joker.setSize(antwortButtonBreite/4, antwortButtonHoehe*3/4);
+        Joker.setLocation(breite - Joker.getSize().width - breite/20, hoehe/3);
+        Joker.setFont(new Font("Antworten", Font.PLAIN, antwortButtonHoehe/6));
+        Joker.setLabel("Joker 50:50");
+        Joker.setVisible(true);
+        Joker.setEnabled(true);
+        Joker.setBackground(Color.CYAN);
+
+        Joker.addMouseListener(new MouseListener()
+            {
+                public void mousePressed(MouseEvent me) {}
+
+                public void mouseReleased(MouseEvent me) {}
+
+                public void mouseClicked(MouseEvent me)
+                {
+                    ArrayList<Integer> zufall = new ArrayList<Integer>();
+                    for (int i = 0; i < antworten.length; i++)
+                    {
+                        zufall.add(i);
+                    }
+
+                    for (int j = 0; j < antworten.length; j++)
+                    {
+                        if (antworten[j].getLabel().equals(frage.antworten[frage.richtigeAntwort-1]))
+                        {
+                            antworten[j].setBackground(Color.CYAN);
+                            zufall.remove(j);
+                        }
+                    }
+
+                    int randomNr = Zufallszahl(zufall);
+                    antworten[zufall.get(randomNr)].setBackground(Color.CYAN);
+                    zufall.remove(randomNr);
+
+                    frame.remove(Joker);
+                }
+
+                public void mouseExited(MouseEvent me) {}
+
+                public void mouseEntered(MouseEvent me) {}
+            });
+
+        frame.add(Joker);
     }
 
     /**
@@ -281,7 +334,7 @@ class QUIZGRAFIK
         {
             zufall.add(i);
         }
-        
+
         for (int i = 0; i < antworten.length; i++)
         {
             int randomNr = Zufallszahl(zufall);
