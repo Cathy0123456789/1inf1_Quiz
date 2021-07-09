@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import javax.swing.Timer;
 
 class QUIZGRAFIK
 {
@@ -45,6 +46,12 @@ class QUIZGRAFIK
     int nummer;
 
     PUNKTE punkte;
+
+    Timer timer;
+    // Zeit pro Frage zur Verfuegung
+    int zeit;
+    // Anzeige der Zeit
+    Label zeitAnzeige;
 
     QUIZGRAFIK (Frame frame, int breite, int hoehe, QUIZ quiz, ArrayList<KATEGORIE> ausgewaehlteKat, int[] anzahlFragen)
     {
@@ -94,6 +101,18 @@ class QUIZGRAFIK
         frame.add(fragenAnzeige);
 
         FragenAuswaehlen();
+
+        // Zeit
+        zeitAnzeige = new Label();
+        zeitAnzeige.setSize(breite, hoehe/20);
+        zeitAnzeige.setAlignment(Label.LEFT);
+        zeitAnzeige.setLocation((int) (0.05 * breite), hoehe/20);
+        zeitAnzeige.setFont(new Font("Zeit", Font.BOLD, breite/100));
+        zeitAnzeige.setVisible(true);
+        zeitAnzeige.setEnabled(true);
+        frame.add(zeitAnzeige);
+
+        TimerHinzufuegen();
 
         // erste Frage anzeigen
         FrageAnzeigen(zuStellendeFragen.get(nummer));
@@ -148,7 +167,7 @@ class QUIZGRAFIK
     /**
      * Fuegt einen neuen Joker-Button hinzu, der 2 Antwortmoeglichkeiten farbig markiert, eine davon dir richtige
      */
-    
+
     void JokerHizufuegen()
     {
         Joker = new Button();
@@ -259,6 +278,9 @@ class QUIZGRAFIK
 
     void AntwortAngeklickt()
     {
+        // Zeit stoppen
+        timer.stop();
+
         // Verhinderung des Anklickens eines weiteren Buttons
         for (Button j : antworten)
         {
@@ -356,6 +378,11 @@ class QUIZGRAFIK
 
     void NaechsteFrage()
     {
+        // Zeit zuruecksetzen und Timer neu starten
+        zeit = 20;
+        timer.restart();
+        zeitAnzeige.setText("Zeit: " + zeit);
+
         nummer++;
         FrageAnzeigen(zuStellendeFragen.get(nummer));
         for (Button i : antworten)
@@ -363,5 +390,34 @@ class QUIZGRAFIK
             i.setBackground(Color.LIGHT_GRAY);
             MouseListenerHinzufuegen(i);
         }
+    }
+
+    /**
+     * Fuegt neuen Timer hinzu
+     */
+    
+    void TimerHinzufuegen()
+    {
+        zeit = 20;
+        zeitAnzeige.setText("Zeit: " + zeit);
+
+        timer = new Timer(1000, new ActionListener()
+            {
+                public void actionPerformed(ActionEvent e)
+                {
+                    // jede Sekunde Zeit um 1 verringern
+                    zeit--;
+                    zeitAnzeige.setText("Zeit: " + zeit);
+                    
+                    // falls Zeit abgelaufen, automatisch naechste Frage anzeigen
+                    if (zeit == -1)
+                    {
+                        timer.stop();
+                        NaechsteFrage();
+                    }
+                }
+            });
+
+        timer.start();
     }
 }
