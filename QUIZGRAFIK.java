@@ -17,6 +17,7 @@ class QUIZGRAFIK
     // vom Spieler ausgewaehlte Antwort
     Button gedrueckterButton;
 
+    // 50:50 Joker-Button
     Button Joker;
 
     // Frage, die derzeit angezeigt wird
@@ -144,6 +145,10 @@ class QUIZGRAFIK
             });
     }
 
+    /**
+     * Fuegt einen neuen Joker-Button hinzu, der 2 Antwortmoeglichkeiten farbig markiert, eine davon dir richtige
+     */
+    
     void JokerHizufuegen()
     {
         Joker = new Button();
@@ -169,6 +174,7 @@ class QUIZGRAFIK
                         zufall.add(i);
                     }
 
+                    // richtige Antwort farbig markieren
                     for (int j = 0; j < antworten.length; j++)
                     {
                         if (antworten[j].getLabel().equals(frage.antworten[frage.richtigeAntwort-1]))
@@ -178,10 +184,11 @@ class QUIZGRAFIK
                         }
                     }
 
+                    // eine der falschen Antworten (zufaellig welche) markieren
                     int randomNr = Zufallszahl(zufall);
                     antworten[zufall.get(randomNr)].setBackground(Color.CYAN);
-                    zufall.remove(randomNr);
 
+                    // Joker entfernen
                     frame.remove(Joker);
                 }
 
